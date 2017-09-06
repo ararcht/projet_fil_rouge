@@ -5,17 +5,29 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <img src="logo.png" alt="logo" style="max-height:50px;" />
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+			<li class="active"><a href="#">Accueil</a></li>
+			<li><a href="#">Nos Gammes</a></li>
+			<li><a href="#">Nos modeles</a></li>
+			<li><a href="#">Nos composants</a></li>
+			<li><a href="#">Se connecter</a></li>			
+		  </ul>
+		  <form class="navbar-form navbar-right">
+			<div class="form-group">
+			  <input type="text" class="form-control" placeholder="site internet">
+			</div>
+			<button type="submit" class="btn btn-default">Rechercher</button>
+		  </form>
+		</div>
+	  </div>
+	</nav>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				Madera
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12"><a href="gammeFiltre.html">
-				<input class="btn btn-primary" type="button" value="Retour"></a>
-			</div>
-		</div>
 		<div class="row">
 		<div class="col-md-4">
 				<div class="panel panel-default">
@@ -31,32 +43,32 @@
 							<thead>
 								<tr>
 									<th></th>
-									<th scope="row">Premium</th>
+									<th class="text-center" scope="row">Premium</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
 									<td>Panneau en bois</td>
-									<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+									<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
 								</tr>
 								<tr>
 									<td>Fenetre en PVC</td>
-									<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+									<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
 								</tr>
 								<tr>
 									<td>Volets en bois</td>
-									<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+									<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
 								</tr><tr>
 									<td>Couverture tuiles</td>
-									<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+									<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
 								</tr>
 								<tr>
 									<td>Couverture chaume</td>
-									<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+									<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
 								</tr>
 								<tr>
 									<td>Cheminé brique</td>
-									<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+									<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
 								</tr>
 							</tbody>
 						</table>
@@ -108,26 +120,58 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-12">
-								Nombre d'options : x
+								Nombre d'options : 2
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								Prix total : 25000€
+							<br />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Voir les options choisies</button>
+								<div id="demo" class="collapse">
+									<ul>
+										<li>Fenetre Aluminium : 250€ / pièce</li>
+										<li>Porte Bois : 600€ / pièce</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+							<br />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								Prix total : <strong>25 523€</strong>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+							<br />
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<input class="btn btn-primary" type="button" value="Imprimer">
+								<input class="btn btn-success" type="button" value="Imprimer">
 							</div>
 							<div class="col-md-6">
-								<input class="btn btn-primary" type="button" value="Commander">
+								<input class="btn btn-success" type="button" value="Commander">
 							</div>
 						</div>
 						</div>
 					
 					
 				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12"><a href="gammeFiltre.html">
+				<input class="btn btn-primary" type="button" value="Retour"></a>
 			</div>
 		</div>
 		</div>

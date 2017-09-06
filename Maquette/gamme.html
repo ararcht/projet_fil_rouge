@@ -5,17 +5,29 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <img src="logo.png" alt="logo" style="max-height:50px;" />
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+			<li class="active"><a href="#">Accueil</a></li>
+			<li><a href="#">Nos Gammes <span class="sr-only">(current)</span></a></li>
+			<li><a href="#">Nos modeles</a></li>
+			<li><a href="#">Nos composants</a></li>
+			<li><a href="#">Se connecter</a></li>			
+		  </ul>
+		  <form class="navbar-form navbar-right">
+			<div class="form-group">
+			  <input type="text" class="form-control" placeholder="site internet">
+			</div>
+			<button type="submit" class="btn btn-default">Rechercher</button>
+		  </form>
+		</div>
+	  </div>
+	</nav>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				Madera
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12"><a href="index.html">
-				<input class="btn btn-primary" type="button" value="Retour"></a>
-			</div>
-		</div>
 		<div class="row">
 		<div class="col-md-12">
 				<div>
@@ -23,56 +35,67 @@
 						<thead>
 							<tr>
 								<th></th>
-								<th scope="row">Premium</th>
-								<th>Basique</th>
-								<th>Eco</th>
+								<th class="text-center" scope="row">Premium</th>
+								<th class="text-center">Basique</th>
+								<th class="text-center">Eco</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>Panneau en bois</td>
-								<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-								<td><span class="glyphicon glyphicon-ok"></span></td>
-								<td><span class="glyphicon glyphicon-remove"></span></td>
+								<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+								<td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+								<td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
 							</tr>
 							<tr>
 								<td>Fenetre en PVC</td>
-								<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-								<td><span class="glyphicon glyphicon-ok"></span></td>
-								<td><span class="glyphicon glyphicon-remove"></span></td>
+								<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+								<td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+								<td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
 							</tr>
 							<tr>
 								<td>Volets en bois</td>
-								<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-								<td><span class="glyphicon glyphicon-ok"></span></td>
-								<td><span class="glyphicon glyphicon-remove"></span></td>
+								<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+								<td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+								<td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
 							</tr><tr>
 								<td>Couverture tuiles</td>
-								<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-								<td><span class="glyphicon glyphicon-plus"></span>En option</td>
-								<td><span class="glyphicon glyphicon-remove"></span></td>
+								<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+								<td class="text-center"><span class="glyphicon glyphicon-plus"></span>En option</td>
+								<td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
 							</tr>
 							<tr>
 								<td>Couverture chaume</td>
-								<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-								<td><span class="glyphicon glyphicon-plus"></span>En option</td>
-								<td><span class="glyphicon glyphicon-remove"></span></td>
+								<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+								<td class="text-center"><span class="glyphicon glyphicon-plus"></span>En option</td>
+								<td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
 							</tr>
 							<tr>
 								<td>Cheminé brique</td>
-								<td scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-								<td><span class="glyphicon glyphicon-plus"></span>En option</td>
-								<td><span class="glyphicon glyphicon-remove"></span></td>
+								<td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+								<td class="text-center"><span class="glyphicon glyphicon-plus"></span>En option</td>
+								<td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
 							</tr>
 							<tr>
 								<td></td>
-								<td scope="row"><a href="resultat.html"><input type="button" value="choissir cette gamme"></a></td>
-								<td><a href="resultat.html"><input type="button" value="choissir cette gamme"></a></td>
-								<td><a href="resultat.html"><input type="button" value="choissir cette gamme"></a></td>
+								<td class="text-center"><div class="col-md-12"><a href="resultat.html">
+									<input class="btn btn-secondary" type="button" value="Choissir cette gamme"></a>
+								</div></td>
+								<td class="text-center"><div class="col-md-12"><a href="resultat.html">
+									<input class="btn btn-secondary" type="button" value="Choissir cette gamme"></a>
+								</div></td>
+								<td class="text-center"><div class="col-md-12"><a href="resultat.html">
+									<input class="btn btn-secondary" type="button" value="Choissir cette gamme"></a>
+								</div></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12"><a href="index.html">
+				<input class="btn btn-primary" type="button" value="Retour"></a>
 			</div>
 		</div>
 		</div>
