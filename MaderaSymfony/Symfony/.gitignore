@@ -17,3 +17,5 @@
 /web/bundles/
 .DS_Store
 /app/config/config.yml
+/app/AppKernel.php
+/app/AppCache.php
