@@ -13,23 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Fournisseur
 {
     /**
-     * @ORM\Column(name="Utilisateur",type="integer")
-     * @ORM\ManyToOne(targetEntity="DevisBundle\Entity\Utilisateur")
-     */
-     private $fk_utilisateur;
-
-     public function setUtilisateur(UserType $fk_utilisateur)
-     {
-       $this->fk_utilisateur = $fk_utilisateur;
-       return $this;
-     }
-
-     public function getUtilisateur()
-     {
-       return $this->fk_utilisateur;
-     }
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -45,6 +28,26 @@ class Fournisseur
      */
     private $prix;
 
+     /**
+     * @var int
+     * @ORM\Column(name="BonCommande", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\BonCommande", mappedBy="BonCommande")
+     */
+     private $fk_boncommande;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Composant", type="integer")
+     * ORM\OneToOne(targetEntity="DevisBundle\Entity\Composant", cascade={"persist"})
+     */
+    private $fk_composant;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Utilisateur", type="integer")
+     * ORM\OneToOne(targetEntity="DevisBundle\Entity\Utilisateur", cascade={"persist"})
+     */
+    private $fk_utilisateur;
 
     /**
      * Get id.
@@ -78,5 +81,16 @@ class Fournisseur
     public function getPrix()
     {
         return $this->prix;
+    }
+
+    public function setUtilisateur(UserType $fk_utilisateur)
+    {
+      $this->fk_utilisateur = $fk_utilisateur;
+      return $this;
+    }
+
+    public function getUtilisateur()
+    {
+      return $this->fk_utilisateur;
     }
 }
