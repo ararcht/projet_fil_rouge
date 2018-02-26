@@ -28,6 +28,13 @@ class TypeEtat
      */
     private $code;
 
+    /**
+     * @var int
+     * @ORM\Column(name="Etat", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Etat", mappedBy="Etat")
+     */
+    private $fk_commande;
+
 
     /**
      * Get id.
