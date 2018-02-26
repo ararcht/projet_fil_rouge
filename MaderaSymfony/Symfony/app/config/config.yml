@@ -44,9 +44,9 @@ doctrine:
     dbal:
         driver: pdo_mysql
         host: '127.0.0.1'
-        port: '8889'
+        port: '3306'
         dbname: 'Madera_devis'
-        user: 'Alison'
+        user: 'root'
         password: ''
         charset: UTF8
         # if using pdo_sqlite as your database driver:
