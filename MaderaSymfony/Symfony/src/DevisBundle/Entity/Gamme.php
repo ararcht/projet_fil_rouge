@@ -28,6 +28,20 @@ class Gamme
      */
     private $nom;
 
+    /**
+     * @var int
+     * @ORM\Column(name="Modele", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Modele", mappedBy="Modele")
+     */
+    private $fk_modele;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Composant", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Composant", mappedBy="Composant")
+     */
+    private $fk_composant;
+
 
     /**
      * Get id.
