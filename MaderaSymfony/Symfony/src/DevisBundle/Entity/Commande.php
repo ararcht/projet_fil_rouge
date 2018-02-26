@@ -37,6 +37,31 @@ class Commande
 
 
     /**
+     * @ORM\Column(name="Devis", type="integer")
+     * @ORM\OneToOne(targetEntity="DevisBundle\Entity\Devis", cascade={"persist"})
+     */
+    private $fk_devis;
+
+
+    /**
+     * @var int
+     * @ORM\Column(name="Paiement", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Paiement", mappedBy="Commande")
+     */
+    private $fk_Paiement;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Etat", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Etat", mappedBy="Commande")
+     */
+    private $fk_Etat;
+
+
+    
+
+
+    /**
      * Get id.
      *
      * @return int
@@ -92,5 +117,79 @@ class Commande
     public function getReference()
     {
         return $this->reference;
+    }
+
+
+
+    /**
+     * Set fkDevis.
+     *
+     * @param int $fkDevis
+     *
+     * @return Commande
+     */
+    public function setFkDevis($fkDevis)
+    {
+        $this->fk_devis = $fkDevis;
+
+        return $this;
+    }
+
+    /**
+     * Get fkDevis.
+     *
+     * @return int
+     */
+    public function getFkDevis()
+    {
+        return $this->fk_devis;
+    }
+
+    /**
+     * Set fkPaiement.
+     *
+     * @param int $fkPaiement
+     *
+     * @return Commande
+     */
+    public function setFkPaiement($fkPaiement)
+    {
+        $this->fk_Paiement = $fkPaiement;
+
+        return $this;
+    }
+
+    /**
+     * Get fkPaiement.
+     *
+     * @return int
+     */
+    public function getFkPaiement()
+    {
+        return $this->fk_Paiement;
+    }
+
+    /**
+     * Set fkEtat.
+     *
+     * @param int $fkEtat
+     *
+     * @return Commande
+     */
+    public function setFkEtat($fkEtat)
+    {
+        $this->fk_Etat = $fkEtat;
+
+        return $this;
+    }
+
+    /**
+     * Get fkEtat.
+     *
+     * @return int
+     */
+    public function getFkEtat()
+    {
+        return $this->fk_Etat;
     }
 }
