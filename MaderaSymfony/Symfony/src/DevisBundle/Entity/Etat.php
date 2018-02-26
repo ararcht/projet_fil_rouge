@@ -89,4 +89,100 @@ class Etat
     {
         return $this->nom;
     }
+
+    /**
+     * Set fkCommande.
+     *
+     * @param int $fkCommande
+     *
+     * @return Etat
+     */
+    public function setFkCommande($fkCommande)
+    {
+        $this->fk_commande = $fkCommande;
+
+        return $this;
+    }
+
+    /**
+     * Get fkCommande.
+     *
+     * @return int
+     */
+    public function getFkCommande()
+    {
+        return $this->fk_commande;
+    }
+
+    /**
+     * Set fkPaiement.
+     *
+     * @param int $fkPaiement
+     *
+     * @return Etat
+     */
+    public function setFkPaiement($fkPaiement)
+    {
+        $this->fk_paiement = $fkPaiement;
+
+        return $this;
+    }
+
+    /**
+     * Get fkPaiement.
+     *
+     * @return int
+     */
+    public function getFkPaiement()
+    {
+        return $this->fk_paiement;
+    }
+
+    /**
+     * Set fkDevis.
+     *
+     * @param int $fkDevis
+     *
+     * @return Etat
+     */
+    public function setFkDevis($fkDevis)
+    {
+        $this->fk_devis = $fkDevis;
+
+        return $this;
+    }
+
+    /**
+     * Get fkDevis.
+     *
+     * @return int
+     */
+    public function getFkDevis()
+    {
+        return $this->fk_devis;
+    }
+
+    /**
+     * Set fkType.
+     *
+     * @param int $fkType
+     *
+     * @return Etat
+     */
+    public function setFkType($fkType)
+    {
+        $this->fk_type = $fkType;
+
+        return $this;
+    }
+
+    /**
+     * Get fkType.
+     *
+     * @return int
+     */
+    public function getFkType()
+    {
+        return $this->fk_type;
+    }
 }
