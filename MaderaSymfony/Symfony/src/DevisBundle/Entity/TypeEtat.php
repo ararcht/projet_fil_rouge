@@ -69,4 +69,28 @@ class TypeEtat
     {
         return $this->code;
     }
+
+    /**
+     * Set fkCommande.
+     *
+     * @param int $fkCommande
+     *
+     * @return TypeEtat
+     */
+    public function setFkCommande($fkCommande)
+    {
+        $this->fk_commande = $fkCommande;
+
+        return $this;
+    }
+
+    /**
+     * Get fkCommande.
+     *
+     * @return int
+     */
+    public function getFkCommande()
+    {
+        return $this->fk_commande;
+    }
 }

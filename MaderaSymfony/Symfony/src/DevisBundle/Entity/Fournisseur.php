@@ -93,4 +93,76 @@ class Fournisseur
     {
       return $this->fk_utilisateur;
     }
+
+    /**
+     * Set fkBoncommande.
+     *
+     * @param int $fkBoncommande
+     *
+     * @return Fournisseur
+     */
+    public function setFkBoncommande($fkBoncommande)
+    {
+        $this->fk_boncommande = $fkBoncommande;
+
+        return $this;
+    }
+
+    /**
+     * Get fkBoncommande.
+     *
+     * @return int
+     */
+    public function getFkBoncommande()
+    {
+        return $this->fk_boncommande;
+    }
+
+    /**
+     * Set fkComposant.
+     *
+     * @param int $fkComposant
+     *
+     * @return Fournisseur
+     */
+    public function setFkComposant($fkComposant)
+    {
+        $this->fk_composant = $fkComposant;
+
+        return $this;
+    }
+
+    /**
+     * Get fkComposant.
+     *
+     * @return int
+     */
+    public function getFkComposant()
+    {
+        return $this->fk_composant;
+    }
+
+    /**
+     * Set fkUtilisateur.
+     *
+     * @param int $fkUtilisateur
+     *
+     * @return Fournisseur
+     */
+    public function setFkUtilisateur($fkUtilisateur)
+    {
+        $this->fk_utilisateur = $fkUtilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get fkUtilisateur.
+     *
+     * @return int
+     */
+    public function getFkUtilisateur()
+    {
+        return $this->fk_utilisateur;
+    }
 }
