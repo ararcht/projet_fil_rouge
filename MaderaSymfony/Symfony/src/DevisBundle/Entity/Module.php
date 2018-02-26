@@ -37,6 +37,34 @@ class Module
 
 
     /**
+     * @var int
+     * @ORM\Column(name="Composant", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Composant", mappedBy="Module")
+     */
+    private $fk_composant;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Type_Module", type="integer")
+     * ORM\OneToOne(targetEntity="DevisBundle\Entity\TypeModule", cascade={"persist"})
+     */
+    private $fk_typeModule;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Devis", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Devis", mappedBy="Module")
+     */
+    private $fk_devis;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Modele", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Modele", mappedBy="Module")
+     */
+    private $fk_modele;
+
+    /**
      * Get id.
      *
      * @return int
@@ -92,5 +120,101 @@ class Module
     public function getPrix()
     {
         return $this->prix;
+    }
+
+    /**
+     * Set fkComposant.
+     *
+     * @param int $fkComposant
+     *
+     * @return Module
+     */
+    public function setFkComposant($fkComposant)
+    {
+        $this->fk_composant = $fkComposant;
+
+        return $this;
+    }
+
+    /**
+     * Get fkComposant.
+     *
+     * @return int
+     */
+    public function getFkComposant()
+    {
+        return $this->fk_composant;
+    }
+
+    /**
+     * Set fkTypeModule.
+     *
+     * @param int $fkTypeModule
+     *
+     * @return Module
+     */
+    public function setFkTypeModule($fkTypeModule)
+    {
+        $this->fk_typeModule = $fkTypeModule;
+
+        return $this;
+    }
+
+    /**
+     * Get fkTypeModule.
+     *
+     * @return int
+     */
+    public function getFkTypeModule()
+    {
+        return $this->fk_typeModule;
+    }
+
+    /**
+     * Set fkDevis.
+     *
+     * @param int $fkDevis
+     *
+     * @return Module
+     */
+    public function setFkDevis($fkDevis)
+    {
+        $this->fk_devis = $fkDevis;
+
+        return $this;
+    }
+
+    /**
+     * Get fkDevis.
+     *
+     * @return int
+     */
+    public function getFkDevis()
+    {
+        return $this->fk_devis;
+    }
+
+    /**
+     * Set fkModele.
+     *
+     * @param int $fkModele
+     *
+     * @return Module
+     */
+    public function setFkModele($fkModele)
+    {
+        $this->fk_modele = $fkModele;
+
+        return $this;
+    }
+
+    /**
+     * Get fkModele.
+     *
+     * @return int
+     */
+    public function getFkModele()
+    {
+        return $this->fk_modele;
     }
 }
