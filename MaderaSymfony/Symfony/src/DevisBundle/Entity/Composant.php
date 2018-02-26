@@ -70,6 +70,42 @@ class Composant
      */
     private $prix;
 
+    /**
+     * @var int
+     * @ORM\Column(name="Gamme", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Gamme", mappedBy="Composant")
+     */
+    private $fk_gamme;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Fournisseur", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Fournisseur", mappedBy="Composant")
+     */
+    private $fk_fournisseur;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Module", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Module", mappedBy="Composant")
+     */
+    private $fk_module;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Matiere", type="integer")
+     * ORM\OneToOne(targetEntity="DevisBundle\Entity\Matiere", cascade={"persist"})
+     */
+    private $fk_matiere;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Teinte", type="integer")
+     * ORM\OneToOne(targetEntity="DevisBundle\Entity\Teinte", cascade={"persist"})
+     */
+    private $fk_teinte;
+
+    
 
     /**
      * Get id.
@@ -247,5 +283,125 @@ class Composant
     public function getPrix()
     {
         return $this->prix;
+    }
+
+    /**
+     * Set fkGamme.
+     *
+     * @param int $fkGamme
+     *
+     * @return Composant
+     */
+    public function setFkGamme($fkGamme)
+    {
+        $this->fk_gamme = $fkGamme;
+
+        return $this;
+    }
+
+    /**
+     * Get fkGamme.
+     *
+     * @return int
+     */
+    public function getFkGamme()
+    {
+        return $this->fk_gamme;
+    }
+
+    /**
+     * Set fkFournisseur.
+     *
+     * @param int $fkFournisseur
+     *
+     * @return Composant
+     */
+    public function setFkFournisseur($fkFournisseur)
+    {
+        $this->fk_fournisseur = $fkFournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Get fkFournisseur.
+     *
+     * @return int
+     */
+    public function getFkFournisseur()
+    {
+        return $this->fk_fournisseur;
+    }
+
+    /**
+     * Set fkModule.
+     *
+     * @param int $fkModule
+     *
+     * @return Composant
+     */
+    public function setFkModule($fkModule)
+    {
+        $this->fk_module = $fkModule;
+
+        return $this;
+    }
+
+    /**
+     * Get fkModule.
+     *
+     * @return int
+     */
+    public function getFkModule()
+    {
+        return $this->fk_module;
+    }
+
+    /**
+     * Set fkMatiere.
+     *
+     * @param int $fkMatiere
+     *
+     * @return Composant
+     */
+    public function setFkMatiere($fkMatiere)
+    {
+        $this->fk_matiere = $fkMatiere;
+
+        return $this;
+    }
+
+    /**
+     * Get fkMatiere.
+     *
+     * @return int
+     */
+    public function getFkMatiere()
+    {
+        return $this->fk_matiere;
+    }
+
+    /**
+     * Set fkTeinte.
+     *
+     * @param int $fkTeinte
+     *
+     * @return Composant
+     */
+    public function setFkTeinte($fkTeinte)
+    {
+        $this->fk_teinte = $fkTeinte;
+
+        return $this;
+    }
+
+    /**
+     * Get fkTeinte.
+     *
+     * @return int
+     */
+    public function getFkTeinte()
+    {
+        return $this->fk_teinte;
     }
 }
