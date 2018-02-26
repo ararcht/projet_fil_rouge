@@ -5,7 +5,10 @@ namespace DevisBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use DevisBundle\Entity\Modele;
+<<<<<<< HEAD
+=======
 use DevisBundle\Entity\Gamme;
+>>>>>>> fc1bd23cef48a3f20f7ed28d9a5c55310e92e71e
 
 class DefaultController extends Controller
 {
