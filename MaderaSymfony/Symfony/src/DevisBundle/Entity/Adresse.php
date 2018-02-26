@@ -12,24 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Adresse
 {
-
-    /**
-     * @ORM\Column(name="Utilisateur",type="integer")
-     * @ORM\ManyToOne(targetEntity="DevisBundle\Entity\Utilisateur")
-     */
-     private $fk_utilisateur;
-
-     public function setUtilisateur(UserType $fk_utilisateur)
-     {
-       $this->fk_utilisateur = $fk_utilisateur;
-       return $this;
-     }
-
-     public function getUtilisateur()
-     {
-       return $this->fk_utilisateur;
-     }
-
     /**
      * @var int
      *
