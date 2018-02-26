@@ -35,6 +35,18 @@ class BonCommande
      */
     private $quantite;
 
+    /**
+     * @ORM\Column(name="Date", type="integer")
+     * @ORM\OneToOne(targetEntity="DevisBundle\Entity\Date", cascade={"persist"})
+     */
+    private $fk_date;
+
+    /**
+     * @ORM\Column(name="Fournisseur", type="integer")
+     * @ORM\OneToOne(targetEntity="DevisBundle\Entity\Fournisseur", cascade={"persist"})
+     */
+    private $fk_fournisseur;
+
 
     /**
      * Get id.
@@ -92,5 +104,53 @@ class BonCommande
     public function getQuantite()
     {
         return $this->quantite;
+    }
+
+    /**
+     * Set fkDate.
+     *
+     * @param int $fkDate
+     *
+     * @return BonCommande
+     */
+    public function setFkDate($fkDate)
+    {
+        $this->fk_date = $fkDate;
+
+        return $this;
+    }
+
+    /**
+     * Get fkDate.
+     *
+     * @return int
+     */
+    public function getFkDate()
+    {
+        return $this->fk_date;
+    }
+
+    /**
+     * Set fkFournisseur.
+     *
+     * @param int $fkFournisseur
+     *
+     * @return BonCommande
+     */
+    public function setFkFournisseur($fkFournisseur)
+    {
+        $this->fk_fournisseur = $fkFournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Get fkFournisseur.
+     *
+     * @return int
+     */
+    public function getFkFournisseur()
+    {
+        return $this->fk_fournisseur;
     }
 }
