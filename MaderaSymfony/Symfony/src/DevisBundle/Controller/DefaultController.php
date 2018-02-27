@@ -19,7 +19,7 @@ class DefaultController extends Controller
          $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
          $modeles = $repoGamme->GetGamme('1');
         // var_dump($modeles);
-        return $this->render('DevisBundle:Default:index.html.twig', 'repoGammes' => $repoGamme);
+        return $this->render('DevisBundle:Default:index.html.twig', array('repoGammes' => $repoGamme));
     }
 
     public function GenerateBDD(){
