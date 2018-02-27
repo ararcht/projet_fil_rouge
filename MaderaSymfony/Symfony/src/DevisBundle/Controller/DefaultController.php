@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use DevisBundle\Entity\Modele;
 use DevisBundle\Entity\Gamme;
 use DevisBundle\Entity\Utilisateur;
+use DevisBundle\Entity\Image;
 
 class DefaultController extends Controller
 {
@@ -15,19 +16,27 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $test = $this->GetModeles();
-        foreach($test as $model){
-            
+        $modeles = $this->GetModeles();
+        $array = array();
+        $arrayTemp = array();
+        $i = 0;
+        foreach($modeles as $model){
+            $id = $model->getId();
+            $arrayTemp[0] = $model->getNom();
+            $url = $model->getFkImage()[0];
+            if($url != null)
+                $arrayTemp[1] = $this->GetImage($url);
+            $arrayTemp[2] = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme($id);
+            $array[$i] = $arrayTemp;
+            $i++;
         }
-        $MktDateDelivery = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme("1");
-        var_dump($MktDateDelivery);
         
-        return $this->render('DevisBundle:Default:index.html.twig', array('repoGammes' => $test));
+        return $this->render('DevisBundle:Default:index.html.twig', array('repoGammes' => $array));
     }
 
     #region Ecran 1
     public function GetModeles(){
-        $repoModeles = $this->getDoctrine()->getRepository(Gamme::class);
+        $repoModeles = $this->getDoctrine()->getRepository(Modele::class);
         return $repoModeles->findAll();
     }
 
@@ -37,21 +46,9 @@ class DefaultController extends Controller
         return $repoGamme->find($id);
     }
 
-    private function SetArray($modeles){
-        $array = array();
-        $i = 0;
-        $j = 0;
-        foreach($modeles as $mod){
-            var_dump($mod->getFkGamme());
-            $gamme = $this->GetGammes($mod->getFkGamme());
-            $img = $this->GetImage($mod.getFkImage());
-            $array[$i][$j] = $mod.getNom();
-            foreach($gamme as $g){
-                $j++;
-                $array[$i][$j] = $g.getNom();
-            }
-            $i++;
-        }
+    public function GetImage($id){
+        $repoImg = $this->getDoctrine()->getRepository(Image::class);
+        return $repoImg->find($id);
     }
     #endregion
 
