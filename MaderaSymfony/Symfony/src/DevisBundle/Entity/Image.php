@@ -35,6 +35,11 @@ class Image
      */
     private $description;
 
+    /**
+   * @ORM\ManyToMany(targetEntity="DevisBundle\Entity\Modele", cascade={"persist"})
+   */
+    private $fk_Modele;
+
 
     /**
      * Get id.
@@ -92,5 +97,48 @@ class Image
     public function getDescription()
     {
         return $this->description;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fk_Modele = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add fkModele.
+     *
+     * @param \DevisBundle\Entity\Modele $fkModele
+     *
+     * @return Image
+     */
+    public function addFkModele(\DevisBundle\Entity\Modele $fkModele)
+    {
+        $this->fk_Modele[] = $fkModele;
+
+        return $this;
+    }
+
+    /**
+     * Remove fkModele.
+     *
+     * @param \DevisBundle\Entity\Modele $fkModele
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeFkModele(\DevisBundle\Entity\Modele $fkModele)
+    {
+        return $this->fk_Modele->removeElement($fkModele);
+    }
+
+    /**
+     * Get fkModele.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFkModele()
+    {
+        return $this->fk_Modele;
     }
 }
