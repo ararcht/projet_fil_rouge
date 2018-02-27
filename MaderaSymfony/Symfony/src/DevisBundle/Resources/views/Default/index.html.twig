@@ -1,3 +1,6 @@
-{% for repoGamme in repoGammes %}
-  {{repoGamme.nom}}
+
+{% for modele in modeles %}
+{% for donnee in modele %}
+  {{ modele[0].nom}}
+{% endfor %}  
 {% endfor %}
