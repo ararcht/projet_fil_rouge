@@ -15,13 +15,27 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $test = $this->GenerateBDD();
-         $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
-         $modeles = $repoGamme->GetGamme('1');
-        // var_dump($modeles);
-        return $this->render('DevisBundle:Default:index.html.twig', 'repoGammes' => $repoGamme);
+        // $test = $this->GenerateBDD();
+        
+        $test = $this->GetModeles();
+        var_dump(test);
+        
+        return $this->render('DevisBundle:Default:index.html.twig');
     }
 
+    #region Ecran 1
+    public function GetModeles(){
+        $repoModeles = $this->getDoctrine()->getRepository(Gamme::class);
+        return $repoGamme->findAll();
+    }
+
+    public function GetGammes($id){
+        $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
+        return $repoGamme->find($id);
+    }
+    #endregion
+
+    #region Generation BDD
     public function GenerateBDD(){
         $test = $this->SetModele("Maison Ville", "1", null, "1");
         $test = $this->SetModele("Maison Ville", "1", null, "2");
@@ -75,16 +89,5 @@ class DefaultController extends Controller
         $em->persist($m);
         $em->flush();
     }
-
-
-
-    public function viewModele(){
-        $repoModele = $this->getDoctrine()->getRepository(Modele::class);
-        $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
-        $repoUser = $this->getDoctrine()->getRepository(User::class);
-        $modeles = $repoModele->findAll();
-        $gammes = $repoGamme->findAll();
-
-
-    }
+    #endregion
 }
