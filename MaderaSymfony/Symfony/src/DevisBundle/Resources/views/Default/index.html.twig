@@ -1,3 +1,26 @@
-{% for repoGamme in repoGammes %}
-  {{repoGamme.nom}}
-{% endfor %}
+{% extends "base.html.twig" %}
+  {% block body %}
+  {% block topmenu %}
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+        <div class="navbar-header">
+          <img src="img/logo.png" alt="logo" style="max-height:50px;" />
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Accueil</a></li>
+          <li><a href="#">Nos Gammes</a></li>
+          <li><a href="#">Nos modeles <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">Nos composants</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <div>Bonjour {{ username }}</div>
+          </form>
+        </div>
+        </div>
+      </nav>
+  {% endblock%}
+
+
+  {% endblock %}

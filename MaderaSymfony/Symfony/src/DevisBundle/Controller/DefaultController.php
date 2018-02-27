@@ -15,15 +15,35 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $test = $this->GetModeles();
-        foreach($test as $model){
-            
-        }
-        $MktDateDelivery = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme("1");
-        var_dump($MktDateDelivery);
-        
-        return $this->render('DevisBundle:Default:index.html.twig', array('repoGammes' => $test));
+      // $this->GenerateBDD();
+        $test =$this->getDoctrine()->getManager()->getRepository('DevisBundle:Modele')->findAll();
+
+        $repository = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('DevisBundle:Utilisateur')
+        ;
+
+      $ListModele = $repository->findAll();
+
+      $user = $this->getUtilisateur(1);
+
+      $nom = $user->getNom();
+
+      // var_dump($ListModele);
+        return $this->render('DevisBundle:Default:index.html.twig', array('username' => $nom));
     }
+
+    // public function menuAction(){
+    //   $user = $this->getUtilisateur(1);
+    //
+    //   $nom = $user->getNom();
+    //
+    //   var_dump($nom);
+    //
+    //   return $this->render('DevisBundle:Default:menu.html.twig', array('username' => $nom));
+    //
+    // }
 
     #region Ecran 1
     public function GetModeles(){
@@ -32,17 +52,27 @@ class DefaultController extends Controller
     }
 
     public function GetGammes($id){
-        var_dump($id);
         $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
         return $repoGamme->find($id);
     }
+
+    public function GetUtilisateur($id){
+     $repository = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Utilisateur')
+       ;
+
+     $user = $repository->find($id);
+     return $user;
+   }
 
     private function SetArray($modeles){
         $array = array();
         $i = 0;
         $j = 0;
         foreach($modeles as $mod){
-            var_dump($mod->getFkGamme());
+            // var_dump($mod->getFkGamme());
             $gamme = $this->GetGammes($mod->getFkGamme());
             $img = $this->GetImage($mod.getFkImage());
             $array[$i][$j] = $mod.getNom();
