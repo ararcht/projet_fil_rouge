@@ -10,4 +10,11 @@ namespace DevisBundle\Repository;
  */
 class GammeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function GetGamme($idModele){
+        return $this->createQueryBuilder('m')
+        ->where("m.fk_modele = :idModele")
+        ->setParameter('idModele', $idModele)
+        ->getQuery()
+        ->getResult();
+    }
 }

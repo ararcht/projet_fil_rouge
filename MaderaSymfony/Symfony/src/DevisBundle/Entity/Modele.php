@@ -37,7 +37,7 @@ class Modele
 
     /**
      * @var int
-     * @ORM\Column(name="Devis", type="integer")
+     * @ORM\Column(name="Devis", type="integer", nullable=true)
      * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Devis", mappedBy="Modele")
      */
     private $fk_Devis;
