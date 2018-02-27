@@ -49,6 +49,12 @@ class Modele
      */
     private $fk_Gamme;
 
+    /**
+    * Many Modele have Many Images.
+   * @ORM\ManyToMany(targetEntity="DevisBundle\Entity\Image", cascade={"persist"})
+   */
+    private $fk_Image;
+
 
     /**
      * Get id.
@@ -154,5 +160,48 @@ class Modele
     public function getFkGamme()
     {
         return $this->fk_Gamme;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fk_Image = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add fkImage.
+     *
+     * @param \DevisBundle\Entity\Image $fkImage
+     *
+     * @return Modele
+     */
+    public function addFkImage(\DevisBundle\Entity\Image $fkImage)
+    {
+        $this->fk_Image[] = $fkImage;
+
+        return $this;
+    }
+
+    /**
+     * Remove fkImage.
+     *
+     * @param \DevisBundle\Entity\Image $fkImage
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeFkImage(\DevisBundle\Entity\Image $fkImage)
+    {
+        return $this->fk_Image->removeElement($fkImage);
+    }
+
+    /**
+     * Get fkImage.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFkImage()
+    {
+        return $this->fk_Image;
     }
 }
