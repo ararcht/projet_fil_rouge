@@ -12,22 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Utilisateur
 {
-    /**
-      * @ORM\Column(name="UsrType",type="integer")
-      * @ORM\ManyToOne(targetEntity="DevisBundle\Entity\UsrType")
-      */
-      private $fk_usrType;
 
-      public function setUserType(UserType $fk_usrType)
-      {
-        $this->fk_usrType = $fk_usrType;
-        return $this;
-      }
-
-      public function getUserType()
-      {
-        return $this->fk_usrType;
-      }
     /**
      * @var int
      *
@@ -93,6 +78,22 @@ class Utilisateur
      */
     private $actif;
 
+    /**
+      * @ORM\Column(name="UsrType",type="integer")
+      * @ORM\ManyToOne(targetEntity="DevisBundle\Entity\UsrType")
+      */
+      private $fk_usrType;
+
+      public function setUserType(UserType $fk_usrType)
+      {
+        $this->fk_usrType = $fk_usrType;
+        return $this;
+      }
+
+      public function getUserType()
+      {
+        return $this->fk_usrType;
+      }
 
     /**
      * Get id.

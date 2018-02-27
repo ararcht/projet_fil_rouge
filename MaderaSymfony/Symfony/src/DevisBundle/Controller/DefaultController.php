@@ -31,6 +31,8 @@ class DefaultController extends Controller
         $test = $this->SetGamme("Eco", "1", "3");
         $test = $this->SetGamme("Basique", "1", "3");
         $test = $this->SetGamme("Premium", "1", "3");
+        $test = $this->SetUtilisateur("Alison", "Rarchaert", "alison@rarchaert.fr", "0666666666", "0232542334", "Alison", md5("1234"), 1, 1);
+
     }
 
     public function SetModele($name, $idModule, $devis, $gamme){
@@ -54,12 +56,31 @@ class DefaultController extends Controller
         $em->flush();
     }
 
+    public function SetUtilisateur($lastname, $name, $mail, $num, $homenum, $login, $mdp, $actif, $usertype){
+        $m = new Utilisateur();
+        $m->setNom($lastname);
+        $m->setPrenom($name);
+        $m->setMail($mail);
+        $m->setNumPortable($num);
+        $m->setNumFixe($homenum);
+        $m->setLogin($login);
+        $m->setMdp($mdp);
+        $m->setActif($actif);
+        $m->setUserType($usertype);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+
+
     public function viewModele(){
         $repoModele = $this->getDoctrine()->getRepository(Modele::class);
         $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
+        $repoUser = $this->getDoctrine()->getRepository(User::class);
         $modeles = $repoModele->findAll();
         $gammes = $repoGamme->findAll();
 
-        
+
     }
 }
