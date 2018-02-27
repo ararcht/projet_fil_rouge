@@ -43,10 +43,8 @@ class Modele
     private $fk_Devis;
 
     /**
-     * @var int
-     * @ORM\Column(name="Gamme", type="integer")
-     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Gamme", mappedBy="Modele")
-     */
+   * @ORM\ManyToMany(targetEntity="DevisBundle\Entity\Gamme", cascade={"persist"})
+   */
     private $fk_Gamme;
 
     /**
@@ -54,6 +52,8 @@ class Modele
    * @ORM\ManyToMany(targetEntity="DevisBundle\Entity\Image", cascade={"persist"})
    */
     private $fk_Image;
+
+
 
 
     /**
@@ -203,5 +203,31 @@ class Modele
     public function getFkImage()
     {
         return $this->fk_Image;
+    }
+
+    /**
+     * Add fkGamme.
+     *
+     * @param \DevisBundle\Entity\Gamme $fkGamme
+     *
+     * @return Modele
+     */
+    public function addFkGamme(\DevisBundle\Entity\Gamme $fkGamme)
+    {
+        $this->fk_Gamme[] = $fkGamme;
+
+        return $this;
+    }
+
+    /**
+     * Remove fkGamme.
+     *
+     * @param \DevisBundle\Entity\Gamme $fkGamme
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeFkGamme(\DevisBundle\Entity\Gamme $fkGamme)
+    {
+        return $this->fk_Gamme->removeElement($fkGamme);
     }
 }
