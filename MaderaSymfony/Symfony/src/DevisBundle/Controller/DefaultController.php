@@ -15,12 +15,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        // $test = $this->GenerateBDD();
-        
-        $test = $this->GetModeles();
-        var_dump(test);
-        
-        return $this->render('DevisBundle:Default:index.html.twig');
+        $test = GetModeles();
+        return $this->render('DevisBundle:Default:index.html.twig', array('repoGammes' => $repoGamme));
     }
 
     #region Ecran 1
