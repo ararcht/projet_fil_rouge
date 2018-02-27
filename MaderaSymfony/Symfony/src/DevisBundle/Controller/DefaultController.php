@@ -15,19 +15,43 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $test = GetModeles();
-        return $this->render('DevisBundle:Default:index.html.twig', array('repoGammes' => $repoGamme));
+        $test = $this->GetModeles();
+        foreach($test as $model){
+            
+        }
+        $MktDateDelivery = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme("1");
+        var_dump($MktDateDelivery);
+        
+        return $this->render('DevisBundle:Default:index.html.twig', array('repoGammes' => $test));
     }
 
     #region Ecran 1
     public function GetModeles(){
         $repoModeles = $this->getDoctrine()->getRepository(Gamme::class);
-        return $repoGamme->findAll();
+        return $repoModeles->findAll();
     }
 
     public function GetGammes($id){
+        var_dump($id);
         $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
         return $repoGamme->find($id);
+    }
+
+    private function SetArray($modeles){
+        $array = array();
+        $i = 0;
+        $j = 0;
+        foreach($modeles as $mod){
+            var_dump($mod->getFkGamme());
+            $gamme = $this->GetGammes($mod->getFkGamme());
+            $img = $this->GetImage($mod.getFkImage());
+            $array[$i][$j] = $mod.getNom();
+            foreach($gamme as $g){
+                $j++;
+                $array[$i][$j] = $g.getNom();
+            }
+            $i++;
+        }
     }
     #endregion
 
