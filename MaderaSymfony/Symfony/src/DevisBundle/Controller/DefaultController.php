@@ -16,10 +16,10 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $test = $this->GenerateBDD();
-        // $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
-        // $modeles = $repoGamme->GetGamme('1');
+         $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
+         $modeles = $repoGamme->GetGamme('1');
         // var_dump($modeles);
-        return $this->render('DevisBundle:Default:index.html.twig');
+        return $this->render('DevisBundle:Default:index.html.twig', 'repoGammes' => $repoGamme);
     }
 
     public function GenerateBDD(){
@@ -33,6 +33,9 @@ class DefaultController extends Controller
         $test = $this->SetGamme("Basique", "1", "3");
         $test = $this->SetGamme("Premium", "1", "3");
         $test = $this->SetUtilisateur("Alison", "Rarchaert", "alison@rarchaert.fr", "0666666666", "0232542334", "Alison", md5("1234"), 1, 1);
+        $test = $this->SetUtilisateur("Jules", "Ragot", "jules@ragot.fr", "0666666666", "0232542334", "Jules", md5("1234"), 1, 1);
+        $test = $this->SetUtilisateur("Pierre", "Thiebert", "pierre@thiebert.fr", "0666666666", "0232542334", "Pierre", md5("1234"), 1, 1);
+        $test = $this->SetUtilisateur("Thomas", "Lepretre", "Thomas@lepretre.fr", "0666666666", "0232542334", "Thomas", md5("1234"), 1, 1);
 
     }
 
