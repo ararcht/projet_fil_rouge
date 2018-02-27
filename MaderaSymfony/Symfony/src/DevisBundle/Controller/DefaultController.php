@@ -19,13 +19,14 @@ class DefaultController extends Controller
         // $this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
-        $repository = $this
-          ->getDoctrine()
-          ->getManager()
-          ->getRepository('DevisBundle:Utilisateur')
-        ;
-
-      $ListModele = $repository->findAll();
+        // var_dump($result);
+      //   $repository = $this
+      //     ->getDoctrine()
+      //     ->getManager()
+      //     ->getRepository('DevisBundle:Utilisateur')
+      //   ;
+      //
+      // $ListModele = $repository->findAll();
 
       $user = $this->getUtilisateur(1);
 
@@ -107,7 +108,6 @@ class DefaultController extends Controller
             $tab[$i]["nom"] = $modele[0];
             foreach($modele[2] as $data){
                 $tab[$i]["gamme".$j] = $data->getNom();
-                $tab[$i]["Idgamme".$j] = $data->getId();
                 $j++;
             }
             $tab[$i]["id"] = $modele[3];
