@@ -1,6 +1,7 @@
 <?php
 
 namespace DevisBundle\Repository;
+use DevisBundle\Entity\Gamme;
 
 /**
  * GammeRepository

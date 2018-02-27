@@ -1,6 +1,7 @@
 <?php
 
 namespace DevisBundle\Repository;
+use DevisBundle\Entity\Modele;
 
 /**
  * ModeleRepository
@@ -10,4 +11,14 @@ namespace DevisBundle\Repository;
  */
 class ModeleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function SetModele($name, $idModule, $devis, $gamme){
+        $m = new Modele();
+        $m->setNom($name);
+        $m->setFkModule($idModule);
+        $m->setFkDevis($devis);
+        $m->setFkGamme($gamme);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
 }

@@ -84,7 +84,7 @@ class Utilisateur
       */
       private $fk_usrType;
 
-      public function setUserType(UserType $fk_usrType)
+      public function setUserType($fk_usrType)
       {
         $this->fk_usrType = $fk_usrType;
         return $this;

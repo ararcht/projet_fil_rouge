@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use DevisBundle\Entity\Modele;
 use DevisBundle\Entity\Gamme;
+use DevisBundle\Entity\Utilisateur;
 
 class DefaultController extends Controller
 {
@@ -14,10 +15,10 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        // $test = $this->GenerateBDD();
-        $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
-        $modeles = $repoGamme->GetGamme('1');
-        var_dump($modeles);
+        $test = $this->GenerateBDD();
+        // $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
+        // $modeles = $repoGamme->GetGamme('1');
+        // var_dump($modeles);
         return $this->render('DevisBundle:Default:index.html.twig');
     }
 
