@@ -19,7 +19,6 @@ class DefaultController extends Controller
         // $this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
-        // var_dump($result);
         $repository = $this
           ->getDoctrine()
           ->getManager()
@@ -57,7 +56,6 @@ class DefaultController extends Controller
         return $repoGamme->find($id);
     }
 
-<<<<<<< HEAD
     public function GetUtilisateur($id){
      $repository = $this
          ->getDoctrine()
@@ -69,8 +67,6 @@ class DefaultController extends Controller
      return $user;
    }
 
-    private function SetArray($modeles){
-=======
     public function GetImage($id){
         $repoImg = $this->getDoctrine()->getRepository(Image::class);
         return $repoImg->find($id);
@@ -78,7 +74,6 @@ class DefaultController extends Controller
 
     public function getModeleGamme(){
         $modeles = $this->GetModeles();
->>>>>>> 797934be938d32429c5dc883f598c0f2927def50
         $array = array();
         $arrayTemp = array();
         $i = 0;
@@ -91,6 +86,7 @@ class DefaultController extends Controller
             }
             // var_dump($id);
             $arrayTemp[2] = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme($id);
+            $arrayTemp[3] = $id;
             // var_dump($arrayTemp[2]);
             $array[$i] = $arrayTemp;
             $i++;
@@ -105,22 +101,16 @@ class DefaultController extends Controller
         $tab = Array();
         $i = 0;
         $j = 0;
-<<<<<<< HEAD
-        foreach($modeles as $mod){
-            // var_dump($mod->getFkGamme());
-            $gamme = $this->GetGammes($mod->getFkGamme());
-            $img = $this->GetImage($mod.getFkImage());
-            $array[$i][$j] = $mod.getNom();
-            foreach($gamme as $g){
-=======
+
         foreach($all as $modele){
             $j = 0;
             $tab[$i]["nom"] = $modele[0];
             foreach($modele[2] as $data){
                 $tab[$i]["gamme".$j] = $data->getNom();
->>>>>>> 797934be938d32429c5dc883f598c0f2927def50
+                $tab[$i]["Idgamme".$j] = $data->getId();
                 $j++;
             }
+            $tab[$i]["id"] = $modele[3];
             $i++;
         }
         return $tab;
