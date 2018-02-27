@@ -20,13 +20,13 @@ class DefaultController extends Controller
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
         // var_dump($result);
-        $repository = $this
-          ->getDoctrine()
-          ->getManager()
-          ->getRepository('DevisBundle:Utilisateur')
-        ;
-
-      $ListModele = $repository->findAll();
+      //   $repository = $this
+      //     ->getDoctrine()
+      //     ->getManager()
+      //     ->getRepository('DevisBundle:Utilisateur')
+      //   ;
+      //
+      // $ListModele = $repository->findAll();
 
       $user = $this->getUtilisateur(1);
 
@@ -57,7 +57,6 @@ class DefaultController extends Controller
         return $repoGamme->find($id);
     }
 
-<<<<<<< HEAD
     public function GetUtilisateur($id){
      $repository = $this
          ->getDoctrine()
@@ -69,8 +68,7 @@ class DefaultController extends Controller
      return $user;
    }
 
-    private function SetArray($modeles){
-=======
+
     public function GetImage($id){
         $repoImg = $this->getDoctrine()->getRepository(Image::class);
         return $repoImg->find($id);
@@ -78,7 +76,6 @@ class DefaultController extends Controller
 
     public function getModeleGamme(){
         $modeles = $this->GetModeles();
->>>>>>> 797934be938d32429c5dc883f598c0f2927def50
         $array = array();
         $arrayTemp = array();
         $i = 0;
@@ -105,20 +102,12 @@ class DefaultController extends Controller
         $tab = Array();
         $i = 0;
         $j = 0;
-<<<<<<< HEAD
-        foreach($modeles as $mod){
-            // var_dump($mod->getFkGamme());
-            $gamme = $this->GetGammes($mod->getFkGamme());
-            $img = $this->GetImage($mod.getFkImage());
-            $array[$i][$j] = $mod.getNom();
-            foreach($gamme as $g){
-=======
+
         foreach($all as $modele){
             $j = 0;
             $tab[$i]["nom"] = $modele[0];
             foreach($modele[2] as $data){
                 $tab[$i]["gamme".$j] = $data->getNom();
->>>>>>> 797934be938d32429c5dc883f598c0f2927def50
                 $j++;
             }
             $i++;
