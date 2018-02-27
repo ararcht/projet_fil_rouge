@@ -19,7 +19,7 @@ class DefaultController extends Controller
         // $this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
-        var_dump($result);
+        // var_dump($result);
         
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result));
     }
@@ -71,15 +71,10 @@ class DefaultController extends Controller
         $j = 0;
         foreach($all as $modele){
             $j = 0;
-            $tab[$i][$j] = Array(
-                "nom" => $modele[0]
-            );
+            $tab[$i]["nom"] = $modele[0];
             foreach($modele[2] as $data){
-                // var_dump($data);
+                $tab[$i]["gamme".$j] = $data->getNom();
                 $j++;
-                $tab[$i][$j] = Array(
-                    "gamme" => $data->getNom()
-                );
             }
             $i++;
         }

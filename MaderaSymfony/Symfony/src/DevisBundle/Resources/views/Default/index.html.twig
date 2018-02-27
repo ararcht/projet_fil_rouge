@@ -1,6 +1,6 @@
 
 {% for modele in modeles %}
-{% for donnee in modele %}
-  {{ modele[0].nom}}
-{% endfor %}  
+  {{ modele.nom}}
+  {{ modele.gamme0}}
+  {{ modele.gamme1}}
 {% endfor %}
