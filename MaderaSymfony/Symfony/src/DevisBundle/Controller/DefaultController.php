@@ -138,7 +138,6 @@ class DefaultController extends Controller
         $test = $this->SetUtilisateur("Jules", "Ragot", "jules@ragot.fr", "0666666666", "0232542334", "Jules", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Pierre", "Thiebert", "pierre@thiebert.fr", "0666666666", "0232542334", "Pierre", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Thomas", "Lepretre", "Thomas@lepretre.fr", "0666666666", "0232542334", "Thomas", md5("1234"), 1, 1);
-
     }
 
     public function SetModele($name, $idModule, $devis){
@@ -185,6 +184,25 @@ class DefaultController extends Controller
         $m->setFkTypeModule($typemodule);
         $m->setFkDevis($devis);
         $m->setFkGamme($gamme);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+    public function SetTeinte($codeTeinte, $description, $fk_composant){
+        $m = new Teinte();
+        $m->setCodeTeinte($codeTeinte);
+        $m->setDescription($description);
+        $m->setFkComposant($fk_composant);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+    public function SetMatiere($matiere, $fk_composant){
+        $m = new Matiere();
+        $m->setMatiere($matiere);
+        $m->setFkComposant($fk_composant);
         $em = $this->getDoctrine()->getManager();
         $em->persist($m);
         $em->flush();
