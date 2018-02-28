@@ -19,14 +19,13 @@ class DefaultController extends Controller
         // $this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
-        // var_dump($result);
-      //   $repository = $this
-      //     ->getDoctrine()
-      //     ->getManager()
-      //     ->getRepository('DevisBundle:Utilisateur')
-      //   ;
-      //
-      // $ListModele = $repository->findAll();
+        //   $repository = $this
+        //     ->getDoctrine()
+        //     ->getManager()
+        //     ->getRepository('DevisBundle:Utilisateur')
+        //   ;
+        //
+        // $ListModele = $repository->findAll();
 
       $user = $this->getUtilisateur(1);
 
@@ -46,7 +45,7 @@ class DefaultController extends Controller
     //
     // }
 
-    #region Ecran 1
+    #region Ecran Index
     public function GetModeles(){
         $repoModeles = $this->getDoctrine()->getRepository(Modele::class);
         return $repoModeles->findAll();
@@ -118,6 +117,14 @@ class DefaultController extends Controller
     #endregion
 
 
+    #region Ecran Résultat
+    public function SelectGamme($idGamme){
+        
+    }
+
+
+    #endregion
+
     #region Generation BDD
     public function GenerateBDD(){
         $test = $this->SetModele("Maison Ville", "1", null);
@@ -170,4 +177,5 @@ class DefaultController extends Controller
         $em->flush();
     }
     #endregion
+
 }
