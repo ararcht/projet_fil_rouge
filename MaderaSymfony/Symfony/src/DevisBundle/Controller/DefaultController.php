@@ -10,7 +10,7 @@ use DevisBundle\Entity\Utilisateur;
 use DevisBundle\Entity\Image;
 
 class DefaultController extends Controller
-{
+{   
     /**
      * @Route("/")
      */
@@ -172,6 +172,19 @@ class DefaultController extends Controller
         $m->setMdp($mdp);
         $m->setActif($actif);
         $m->setUserType($usertype);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+    public function SetModule($nom, $prix, $composant, $typemodule, $devis, $gamme){
+        $m = new Module();
+        $m->setNom($nom);
+        $m->setPrix($prix);
+        $m->setFkComposant($composant);
+        $m->setFkTypeModule($typemodule);
+        $m->setFkDevis($devis);
+        $m->setFkGamme($gamme);
         $em = $this->getDoctrine()->getManager();
         $em->persist($m);
         $em->flush();
