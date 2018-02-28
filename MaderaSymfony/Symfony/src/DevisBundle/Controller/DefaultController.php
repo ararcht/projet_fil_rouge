@@ -219,6 +219,14 @@ class DefaultController extends Controller
         $em->flush();
     }
 
+    public function SetMatiere($matiere, $fk_composant){
+        $m = new Matiere();
+        $m->setMatiere($matiere);
+        $m->setFkComposant($fk_composant);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
 
     #endregion
 
