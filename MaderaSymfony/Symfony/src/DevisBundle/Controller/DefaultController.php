@@ -10,7 +10,7 @@ use DevisBundle\Entity\Utilisateur;
 use DevisBundle\Entity\Image;
 
 class DefaultController extends Controller
-{   
+{
     /**
      * @Route("/")
      */
@@ -119,7 +119,7 @@ class DefaultController extends Controller
 
     #region Ecran Résultat
     public function SelectGamme($idGamme){
-        
+
     }
 
 
@@ -184,6 +184,25 @@ class DefaultController extends Controller
         $m->setFkTypeModule($typemodule);
         $m->setFkDevis($devis);
         $m->setFkGamme($gamme);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+    public function SetComposant($nom, $longueur, $largeur, $taille, $poids, $stock, $prix, $gamme, $fournisseur, $module, $matiere, $teinte){
+        $m = new Module();
+        $m->setNom($nom);
+        $m->setLongueur($longueur);
+        $m->setLargeur($largeur);
+        $m->setTaille($taille);
+        $m->setPoids($poids);
+        $m->setStock($stock);
+        $m->setPrix($prix);
+        $m->setFkGamme($gamme);
+        $m->setFkFournisseur($fournisseur);
+        $m->setFkModule($module);
+        $m->setFkMatiere($matiere);
+        $m->setFkTeinte($teinte);
         $em = $this->getDoctrine()->getManager();
         $em->persist($m);
         $em->flush();
