@@ -210,7 +210,7 @@ class DefaultController extends Controller
     }
 
     public function SetTeinte($codeTeinte, $description, $fk_composant){
-        $m = new Module();
+        $m = new Teinte();
         $m->setCodeTeinte($codeTeinte);
         $m->setDescription($description);
         $m->setFkComposant($fk_composant);
