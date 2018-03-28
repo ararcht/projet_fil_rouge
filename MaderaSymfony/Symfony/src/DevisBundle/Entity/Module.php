@@ -39,7 +39,7 @@ class Module
     /**
      * @var int
      * @ORM\Column(name="Composant", type="integer")
-     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Composant", mappedBy="Module")
+     * @ORM\ManyToMany(targetEntity="DevisBundle\Entity\Composant", cascade={"persist"})
      */
     private $fk_composant;
 
@@ -63,6 +63,13 @@ class Module
      * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Gamme", mappedBy="Module")
      */
     private $fk_gamme;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Gamme", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Gamme", mappedBy="Module")
+     */
+    private $fk_modele;
 
     /**
      * Get id.

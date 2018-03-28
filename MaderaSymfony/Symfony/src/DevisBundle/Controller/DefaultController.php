@@ -140,7 +140,6 @@ class DefaultController extends Controller
         $test = $this->SetUtilisateur("Jules", "Ragot", "jules@ragot.fr", "0666666666", "0232542334", "Jules", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Pierre", "Thiebert", "pierre@thiebert.fr", "0666666666", "0232542334", "Pierre", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Thomas", "Lepretre", "Thomas@lepretre.fr", "0666666666", "0232542334", "Thomas", md5("1234"), 1, 1);
-<<<<<<< HEAD
 
         $this->setMatiere("Chêne",1);
         $this->setMatiere("Sapin",1);
@@ -185,8 +184,6 @@ class DefaultController extends Controller
 
 
 
-=======
->>>>>>> 87fb5dea67855f7b67ccfcf6b508ee847c72381c
     }
 
     public function SetModele($name, $idModule, $devis){
