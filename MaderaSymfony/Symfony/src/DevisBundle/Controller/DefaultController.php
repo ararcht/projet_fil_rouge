@@ -483,13 +483,7 @@ class DefaultController extends Controller
 
 
     public function getIdModele($nom){
-<<<<<<< HEAD
-        $repoModele = $this->getDoctrine()->getRepository(Modele::class)->findOneBy(['nom' => $nom]);
-        // $truc = $repoModele->findById(1);
-        var_dump($repoModele->id);
-=======
         return $this->getDoctrine()->getRepository(Modele::class)->findOneBy(["nom" => $nom])->id;
->>>>>>> a5391bb8be674e0c82b31d234635290a9e9b060d
     }
 
     public function getIdGamme($nom){
