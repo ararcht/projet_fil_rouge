@@ -105,7 +105,7 @@ class Composant
      */
     private $fk_teinte;
 
-    
+
 
     /**
      * Get id.

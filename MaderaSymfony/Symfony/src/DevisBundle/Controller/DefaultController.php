@@ -19,7 +19,7 @@ class DefaultController extends Controller
         // $this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
-        // var_dump($result);
+          var_dump($result);
       //   $repository = $this
       //     ->getDoctrine()
       //     ->getManager()
@@ -33,6 +33,13 @@ class DefaultController extends Controller
       $nom = $user->getNom();
 
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
+    }
+    public function resultsAction()
+    {
+        // $this->GenerateBDD();
+        // $arrayModeleGamme = $this->getModeleGamme();
+
+        return $this->render('DevisBundle:Default:results.html.twig');
     }
 
     // public function menuAction(){
@@ -106,8 +113,9 @@ class DefaultController extends Controller
         foreach($all as $modele){
             $j = 0;
             $tab[$i]["nom"] = $modele[0];
+            $tab[$i]['url'] = '';
             foreach($modele[2] as $data){
-                $tab[$i]["gamme".$j] = $data->getNom();
+                $tab[$i]["gamme"][$j]= $data->getNom();
                 $j++;
             }
             $i++;
