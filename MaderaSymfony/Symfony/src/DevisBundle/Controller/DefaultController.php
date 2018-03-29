@@ -33,6 +33,7 @@ class DefaultController extends Controller
         $user = $this->getUtilisateur(1);
 
         $nom = $user->getNom();
+        var_dump($this->getEtape2("Maison Ville", "Basique"));
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
         
     }
@@ -459,7 +460,6 @@ class DefaultController extends Controller
             $objReturn["Module"][$i]["Nom"] = $val->nom;
             $compo = $repositoryCompo->findBy(['fk_module' => $val]);
             foreach($compo as $c){
-                var_dump($c->nom);
                 $objReturn["Module"][$i]["Composant"]["Nom"] = $c->nom;
                 $objReturn["Module"][$i]["Composant"]["Prix"] = $c->prix;
                 $n = $this->getCompoRef($c);
