@@ -64,12 +64,6 @@ class Module
      */
     private $fk_gamme;
 
-    /**
-     * @var int
-     * @ORM\Column(name="Modele", type="integer")
-     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Modele", mappedBy="Module")
-     */
-    private $fk_modele;
 
     /**
      * Get id.
