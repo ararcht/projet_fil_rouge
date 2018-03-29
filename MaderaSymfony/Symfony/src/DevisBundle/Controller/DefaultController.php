@@ -484,9 +484,11 @@ class DefaultController extends Controller
 
 
     public function getIdModele($nom){
-        $repoModele = $this->getDoctrine()->getRepository(Modele::class)->find(1);
 
-        var_dump($repoModele);
+        var_dump($nom);
+        $repoModele = $this->getDoctrine()->getRepository(Modele::class)->findOneBy(['nom' => $nom]);
+
+         var_dump($repoModele);
         // $truc = $repoModele->findById(1);
     }
 
