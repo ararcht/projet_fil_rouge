@@ -8,10 +8,6 @@ use DevisBundle\Entity\Modele;
 use DevisBundle\Entity\Gamme;
 use DevisBundle\Entity\Utilisateur;
 use DevisBundle\Entity\Image;
-use DevisBundle\Entity\Matiere;
-use DevisBundle\Entity\Teinte;
-use DevisBundle\Entity\Module;
-use DevisBundle\Entity\Composant;
 
 class DefaultController extends Controller
 {
@@ -21,6 +17,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         //$this->GenerateBDD();
+<<<<<<< HEAD
         // $arrayModeleGamme = $this->getModeleGamme();
         // $result = $this->GetArray();
         // //   $repository = $this
@@ -35,17 +32,37 @@ class DefaultController extends Controller
 
         //$nom = $user->getNom();
         var_dump($this->getEtape2("Maison Ville", "Basique"));
+=======
+        $arrayModeleGamme = $this->getModeleGamme();
+        $result = $this->GetArray();
+          var_dump($result);
+      //   $repository = $this
+      //     ->getDoctrine()
+      //     ->getManager()
+      //     ->getRepository('DevisBundle:Utilisateur')
+      //   ;
+      //
+      // $ListModele = $repository->findAll();
+
+      $user = $this->getUtilisateur(1);
+
+      $nom = $user->getNom();
+        // var_dump($result);
+>>>>>>> e7f8582c0e4c69e84881bf2dc97484b010dd03cd
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
 
     }
-    public function resultsAction()
-    {
-        // $this->GenerateBDD();
-        // $arrayModeleGamme = $this->getModeleGamme();
 
-        return $this->render('DevisBundle:Default:results.html.twig');
-    }
+    /**
+     * @Route("/results")
+     */
 
+     public function resultsAction(){
+       $user = $this->getUtilisateur(1);
+
+       $nom = $user->getNom();
+       return $this->render('DevisBundle:Default:results.html.twig',array('username' => $nom));
+     }
     // public function menuAction(){
     //   $user = $this->getUtilisateur(1);
     //
@@ -57,22 +74,16 @@ class DefaultController extends Controller
     //
     // }
 
-    #region Ecran Index
+    #region Ecran 1
     public function GetModeles(){
         $repoModeles = $this->getDoctrine()->getRepository(Modele::class);
         return $repoModeles->findAll();
     }
 
-    public function GetGamme($id){
+    public function GetGammes($id){
         $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
         return $repoGamme->find($id);
     }
-
-    public function GetModele($id){
-        $repoGamme = $this->getDoctrine()->getRepository(Modele::class);
-        return $repoGamme->find($id);
-    }
-
 
     public function GetUtilisateur($id){
      $repository = $this
@@ -84,6 +95,7 @@ class DefaultController extends Controller
      $user = $repository->find($id);
      return $user;
    }
+
 
     public function GetImage($id){
         $repoImg = $this->getDoctrine()->getRepository(Image::class);
@@ -102,9 +114,8 @@ class DefaultController extends Controller
             if($url != null){
                 $arrayTemp[1] = $this->GetImage($url);
             }
-            
+
             $arrayTemp[2] = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme($id);
-            $arrayTemp[3] = $id;
             // var_dump($arrayTemp[2]);
             $array[$i] = $arrayTemp;
             $i++;
@@ -127,7 +138,6 @@ class DefaultController extends Controller
                 $tab[$i]["gamme"][$j]= $data->getNom();
                 $j++;
             }
-            $tab[$i]["id"] = $modele[3];
             $i++;
         }
         return $tab;
@@ -135,19 +145,12 @@ class DefaultController extends Controller
     #endregion
 
 
-    #region Ecran Résultat
-    public function SelectGamme($idGamme){
-
-    }
-
-
-    #endregion
-
     #region Generation BDD
     public function GenerateBDD(){
         #region modele
         $test = $this->SetModele("Maison Ville", "1", null);
         $test = $this->SetModele("Maison Campagne", "1", null);
+<<<<<<< HEAD
         $test = $this->SetModele("Maison Ecologique", "1", null);
         $test = $this->SetModele("Maison Moderne", "1", null);
         #endregion
@@ -166,6 +169,19 @@ class DefaultController extends Controller
         #endregion
         
         #region user
+=======
+        $test = $this->SetGamme("Eco", "1", "3");
+        $test = $this->SetGamme("Basique", "1", "3");
+        $test = $this->SetGamme("Eco", "2", "3");
+        $test = $this->SetGamme("Basique", "2", "3");
+        $test = $this->SetGamme("Eco", "3", "3");
+        $test = $this->SetGamme("Basique", "3", "3");
+        $test = $this->SetGamme("Premium", "3", "3");
+        $test = $this->SetGamme("Eco", "4", "3");
+        $test = $this->SetGamme("Basique", "4", "3");
+        $test = $this->SetGamme("Premium", "4", "3");
+
+>>>>>>> e7f8582c0e4c69e84881bf2dc97484b010dd03cd
         $test = $this->SetUtilisateur("Alison", "Rarchaert", "alison@rarchaert.fr", "0666666666", "0232542334", "Alison", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Jules", "Ragot", "jules@ragot.pro", "0666666666", "0232542334", "Jules", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Pierre", "Thiebert", "pierre@thiebert.me", "0666666666", "0232542334", "Pierre", md5("1234"), 1, 1);
@@ -304,6 +320,7 @@ class DefaultController extends Controller
         #endregion
         
         #region sol
+<<<<<<< HEAD
         $this->setModule("Sol",10000,0,0,1,0);//23        
         $this->setModule("Sol",10000,0,0,2,0);//24        
         $this->setModule("Sol",10000,0,0,3,0);//25    
@@ -315,20 +332,33 @@ class DefaultController extends Controller
         $this->setModule("Sol",10000,0,0,9,0);//31      
         $this->setModule("Sol",10000,0,0,10,0);//32       
         $this->setModule("Sol",10000,0,0,11,0);//33
+=======
+        $this->setModule("Sol",10000,0,0,1,0);
+        $this->setModule("Sol",10000,0,0,2,0);
+        $this->setModule("Sol",10000,0,0,3,0);
+        $this->setModule("Sol",10000,0,0,4,0);
+        $this->setModule("Sol",10000,0,0,5,0);
+        $this->setModule("Sol",10000,0,0,6,0);
+        $this->setModule("Sol",10000,0,0,7,0);
+        $this->setModule("Sol",10000,0,0,8,0);
+        $this->setModule("Sol",10000,0,0,9,0);
+        $this->setModule("Sol",10000,0,0,10,0);
+        $this->setModule("Sol",10000,0,0,11,0);
+>>>>>>> e7f8582c0e4c69e84881bf2dc97484b010dd03cd
         #endregion
         
         #region cloison
-        $this->setModule("Cloison",1000,0,0,1,0);        
-        $this->setModule("Cloison",1000,0,0,3,0);        
-        $this->setModule("Cloison",1000,0,0,2,0);        
-        $this->setModule("Cloison",1000,0,0,4,0);        
-        $this->setModule("Cloison",1000,0,0,5,0);        
-        $this->setModule("Cloison",1000,0,0,6,0);        
-        $this->setModule("Cloison",1000,0,0,7,0);        
-        $this->setModule("Cloison",1000,0,0,8,0);        
-        $this->setModule("Cloison",1000,0,0,9,0);        
-        $this->setModule("Cloison",1000,0,0,10,0);        
-        $this->setModule("Cloison",1000,0,0,11,0);        
+        $this->setModule("Cloison",1000,0,0,1,0);
+        $this->setModule("Cloison",1000,0,0,3,0);
+        $this->setModule("Cloison",1000,0,0,2,0);
+        $this->setModule("Cloison",1000,0,0,4,0);
+        $this->setModule("Cloison",1000,0,0,5,0);
+        $this->setModule("Cloison",1000,0,0,6,0);
+        $this->setModule("Cloison",1000,0,0,7,0);
+        $this->setModule("Cloison",1000,0,0,8,0);
+        $this->setModule("Cloison",1000,0,0,9,0);
+        $this->setModule("Cloison",1000,0,0,10,0);
+        $this->setModule("Cloison",1000,0,0,11,0);
         #endregion
 
     }
@@ -368,58 +398,8 @@ class DefaultController extends Controller
         $em->persist($m);
         $em->flush();
     }
-
-    public function SetModule($nom, $prix, $composant, $typemodule, $devis, $gamme){
-        $m = new Module();
-        $m->setNom($nom);
-        $m->setPrix($prix);
-        $m->setFkComposant($composant);
-        $m->setFkTypeModule($typemodule);
-        $m->setFkDevis($devis);
-        $m->setFkGamme($gamme);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($m);
-        $em->flush();
-    }
-
-    public function SetComposant($nom, $longueur, $largeur, $taille, $poids, $stock, $prix, $gamme, $fournisseur, $module, $matiere, $teinte){
-        $m = new Composant();
-        $m->setNom($nom);
-        $m->setLongueur($longueur);
-        $m->setLargeur($largeur);
-        $m->setTaille($taille);
-        $m->setPoids($poids);
-        $m->setStock($stock);
-        $m->setPrix($prix);
-        $m->setFkGamme($gamme);
-        $m->setFkFournisseur($fournisseur);
-        $m->setFkModule($module);
-        $m->setFkMatiere($matiere);
-        $m->setFkTeinte($teinte);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($m);
-        $em->flush();
-    }
-
-    public function SetTeinte($codeTeinte, $description, $fk_composant){
-        $m = new Teinte();
-        $m->setCodeTeinte($codeTeinte);
-        $m->setDescription($description);
-        $m->setFkComposant($fk_composant);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($m);
-        $em->flush();
-    }
-
-    public function SetMatiere($matiere, $fk_composant){
-        $m = new Matiere();
-        $m->setMatiere($matiere);
-        $m->setFkComposant($fk_composant);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($m);
-        $em->flush();
-    }
     #endregion
+<<<<<<< HEAD
 
     #region etape 2
     public function getEtape2($modele, $gamme){
@@ -514,4 +494,6 @@ class DefaultController extends Controller
     }
     #endregion
 
+=======
+>>>>>>> e7f8582c0e4c69e84881bf2dc97484b010dd03cd
 }
