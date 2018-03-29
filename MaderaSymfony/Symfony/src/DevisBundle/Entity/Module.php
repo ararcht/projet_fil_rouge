@@ -39,7 +39,7 @@ class Module
     /**
      * @var int
      * @ORM\Column(name="Composant", type="integer")
-     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Composant", mappedBy="Module")
+     * @ORM\ManyToMany(targetEntity="DevisBundle\Entity\Composant", cascade={"persist"})
      */
     private $fk_composant;
 
@@ -52,15 +52,22 @@ class Module
 
     /**
      * @var int
-     * @ORM\Column(name="Devis", type="integer")
+     * @ORM\Column(name="Devis", type="integer", nullable=true)
      * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Devis", mappedBy="Module")
      */
     private $fk_devis;
 
     /**
      * @var int
-     * @ORM\Column(name="Modele", type="integer")
-     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Modele", mappedBy="Module")
+     * @ORM\Column(name="Gamme", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Gamme", mappedBy="Module")
+     */
+    private $fk_gamme;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Gamme", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Gamme", mappedBy="Module")
      */
     private $fk_modele;
 
@@ -195,26 +202,26 @@ class Module
     }
 
     /**
-     * Set fkModele.
+     * Set fkGamme.
      *
-     * @param int $fkModele
+     * @param int $fkGamme
      *
      * @return Module
      */
-    public function setFkModele($fkModele)
+    public function setFkGamme($fkGamme)
     {
-        $this->fk_modele = $fkModele;
+        $this->fk_gamme = $fkGamme;
 
         return $this;
     }
 
     /**
-     * Get fkModele.
+     * Get fkGamme.
      *
      * @return int
      */
-    public function getFkModele()
+    public function getFkGamme()
     {
-        return $this->fk_modele;
+        return $this->fk_gamme;
     }
 }

@@ -79,7 +79,7 @@ class Composant
 
     /**
      * @var int
-     * @ORM\Column(name="Fournisseur", type="integer")
+     * @ORM\Column(name="Fournisseur", type="integer", nullable=true )
      * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Fournisseur", mappedBy="Composant")
      */
     private $fk_fournisseur;
