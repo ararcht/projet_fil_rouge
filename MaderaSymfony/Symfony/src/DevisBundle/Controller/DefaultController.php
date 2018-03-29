@@ -19,7 +19,7 @@ class DefaultController extends Controller
         // $this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
-          var_dump($result);
+          // var_dump($result);
       //   $repository = $this
       //     ->getDoctrine()
       //     ->getManager()
@@ -33,7 +33,7 @@ class DefaultController extends Controller
       $nom = $user->getNom();
 
         //$nom = $user->getNom();
-        var_dump($this->getEtape2("Maison Ville", "Basique"));
+
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
     }
 
@@ -42,13 +42,13 @@ class DefaultController extends Controller
      */
     public function resultsAction()
     {
-        // $this->GenerateBDD();
+         // $this->GenerateBDD();
         // $arrayModeleGamme = $this->getModeleGamme();
-
-        //$nom = $user->getNom();
-        $this->getEtape2("Maison Ville", "Basique");
-
-        return $this->render('DevisBundle:Default:results.html.twig', array('username' => $nom));
+        $user = $this->getUtilisateur(1);
+        $nom = $user->getNom();
+        $data = $this->getEtape2("Maison Ville", "Basique");
+        var_dump($data);
+        return $this->render('DevisBundle:Default:results.html.twig', array('results' => $data, 'username' => $nom));
     }
 
     #region Ecran Index
