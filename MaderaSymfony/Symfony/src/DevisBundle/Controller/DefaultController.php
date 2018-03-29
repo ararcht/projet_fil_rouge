@@ -175,12 +175,18 @@ class DefaultController extends Controller
         $this->SetComposant("Sol Carrelage", 0, 0, 100, 1 ,10000, 3000,2,1,0,10,6);
         $this->SetComposant("Sol Parquet", 0, 0, 120, 1 ,10000, 12000,3,1,0,9,7);
 
-        $this->setModule("Mur",5000);
+        // //Toiture
+        // $this->SetComposant("Sol Parquet", 0, 0, 120, 1, 10000, 12000,3,1,0,9,7);
+        //
+        //
+        // //Mur avec porte
+        // $this->setModule("Mur",5000,0,0,0,0);
+        // $this->setModule("Toiture",10000,0,0,0,0);
 
 
 
 
-
+// SetModule($nom, $prix, $composant, $typemodule, $devis, $gamme)
 
 
 
