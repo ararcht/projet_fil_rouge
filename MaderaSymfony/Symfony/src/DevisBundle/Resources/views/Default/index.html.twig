@@ -15,7 +15,7 @@
           </ul>
           <form class="navbar-form navbar-right">
           <div class="form-group">
-            <div>Bonjour {{ username }}</div>
+            <div>Client : {{ username }}</div>
           </form>
         </div>
         </div>
@@ -26,10 +26,73 @@
 
 
     {% for modele in modeles %}
-    <div class='col-lg-12'>
-      {{ modele.nom}}
-      {{ modele.gamme0}}
-      {{ modele.gamme1}}
+      <div class='col-lg-12 blockmodelegamme flex-parent'>
+      <div class='blockmodele col-lg-3 col-md-4 col-sm-12 col-xs-12'>
+        <p class='text-center titlemodele'>{{ modele.nom}}</p>
+      </div>
+      <div class='blockgamme col-lg-9 col-md-8 col-sm-12 col-xs-12'>
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                {% for element in modele.gamme %}
+                  <th class="text-center">{{element}}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Panneau en bois</td>
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+                <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+              </tr>
+              <tr>
+                <td>Fenetre en PVC</td>
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+                <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+              </tr>
+              <tr>
+                <td>Volets en bois</td>
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+                <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+              </tr><tr>
+                <td>Couverture tuiles</td>
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+                <td class="text-center"><span class="glyphicon glyphicon-plus"></span>En option</td>
+                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+              </tr>
+              <tr>
+                <td>Couverture chaume</td>
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+                <td class="text-center"><span class="glyphicon glyphicon-plus"></span>En option</td>
+                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+              </tr>
+              <tr>
+                <td>Cheminé brique</td>
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+                <td class="text-center"><span class="glyphicon glyphicon-plus"></span>En option</td>
+                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="text-center"><div class="col-md-12"><a href="resultat.html">
+                  <input class="btn btn-secondary" type="button" value="Choisir cette gamme"></a>
+                </div></td>
+                <td class="text-center"><div class="col-md-12"><a href="resultat.html">
+                  <input class="btn btn-secondary" type="button" value="Choisir cette gamme"></a>
+                </div></td>
+                <td class="text-center"><div class="col-md-12"><a href="resultat.html">
+                  <input class="btn btn-secondary" type="button" value="Choisir cette gamme"></a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
     {% endfor %}
-    </div>
   {% endblock %}

@@ -37,6 +37,13 @@ class DefaultController extends Controller
 
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
     }
+    public function resultsAction()
+    {
+        // $this->GenerateBDD();
+        // $arrayModeleGamme = $this->getModeleGamme();
+
+        return $this->render('DevisBundle:Default:results.html.twig');
+    }
 
     // public function menuAction(){
     //   $user = $this->getUtilisateur(1);
@@ -117,7 +124,7 @@ class DefaultController extends Controller
             $tab[$i]["nom"] = $modele[0];
             $tab[$i]["url"] = "";
             foreach($modele[2] as $data){
-                $tab[$i]["gamme".$j] = $data->getNom();
+                $tab[$i]["gamme"][$j]= $data->getNom();
                 $j++;
             }
             $tab[$i]["id"] = $modele[3];
