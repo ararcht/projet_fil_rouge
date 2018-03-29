@@ -19,14 +19,14 @@ class Modele
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Nom", type="string", length=255)
      */
-    private $nom;
+    public $nom;
 
     /**
      * @var int
@@ -41,6 +41,7 @@ class Modele
      * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Devis", mappedBy="Modele")
      */
     private $fk_Devis;
+
 
 
 
@@ -158,41 +159,7 @@ class Modele
         $this->fk_Image = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Add fkImage.
-     *
-     * @param \DevisBundle\Entity\Image $fkImage
-     *
-     * @return Modele
-     */
-    public function addFkImage(\DevisBundle\Entity\Image $fkImage)
-    {
-        $this->fk_Image[] = $fkImage;
-
-        return $this;
-    }
-
-    /**
-     * Remove fkImage.
-     *
-     * @param \DevisBundle\Entity\Image $fkImage
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeFkImage(\DevisBundle\Entity\Image $fkImage)
-    {
-        return $this->fk_Image->removeElement($fkImage);
-    }
-
-    /**
-     * Get fkImage.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getFkImage()
-    {
-        return $this->fk_Image;
-    }
+   
 
     /**
      * Add fkGamme.

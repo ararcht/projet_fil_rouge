@@ -26,14 +26,14 @@ class Module
      *
      * @ORM\Column(name="Nom", type="string", length=255)
      */
-    private $nom;
+    public $nom;
 
     /**
      * @var int
      *
      * @ORM\Column(name="Prix", type="integer")
      */
-    private $prix;
+    public $prix;
 
 
     /**
