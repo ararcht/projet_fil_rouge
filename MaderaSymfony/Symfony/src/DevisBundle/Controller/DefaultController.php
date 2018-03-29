@@ -33,29 +33,22 @@ class DefaultController extends Controller
         $user = $this->getUtilisateur(1);
 
         $nom = $user->getNom();
-        var_dump($this->getEtape2("Maison Ville", "Basique"));
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
         
     }
+    
+    /**
+     * @Route("/results")
+     */
     public function resultsAction()
     {
+        $user = $this->getUtilisateur(1);
+
+        $nom = $user->getNom();
         $this->getEtape2("Maison Ville", "Basique");
-        // $this->GenerateBDD();
-        // $arrayModeleGamme = $this->getModeleGamme();
-
-        return $this->render('DevisBundle:Default:results.html.twig');
+        
+        return $this->render('DevisBundle:Default:results.html.twig', array('username' => $nom));
     }
-
-    // public function menuAction(){
-    //   $user = $this->getUtilisateur(1);
-    //
-    //   $nom = $user->getNom();
-    //
-    //   var_dump($nom);
-    //
-    //   return $this->render('DevisBundle:Default:menu.html.twig', array('username' => $nom));
-    //
-    // }
 
     #region Ecran Index
     public function GetModeles(){
@@ -460,6 +453,8 @@ class DefaultController extends Controller
             $objReturn["Module"][$i]["Nom"] = $val->nom;
             $compo = $repositoryCompo->findBy(['fk_module' => $val]);
             foreach($compo as $c){
+                var_dump($c->nom);
+                var_dump("   AAAA    ");
                 $objReturn["Module"][$i]["Composant"]["Nom"] = $c->nom;
                 $objReturn["Module"][$i]["Composant"]["Prix"] = $c->prix;
                 $n = $this->getCompoRef($c);
