@@ -19,7 +19,7 @@ class DefaultController extends Controller
         //$this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
-          var_dump($result);
+      //    var_dump($result);
       //   $repository = $this
       //     ->getDoctrine()
       //     ->getManager()
