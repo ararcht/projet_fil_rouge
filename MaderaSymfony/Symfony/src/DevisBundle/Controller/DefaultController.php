@@ -51,10 +51,16 @@ class DefaultController extends Controller
         return $repoModeles->findAll();
     }
 
-    public function GetGammes($id){
+    public function GetGamme($id){
         $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
         return $repoGamme->find($id);
     }
+
+    public function GetModele($id){
+        $repoGamme = $this->getDoctrine()->getRepository(Modele::class);
+        return $repoGamme->find($id);
+    }
+
 
     public function GetUtilisateur($id){
      $repository = $this
@@ -105,6 +111,7 @@ class DefaultController extends Controller
         foreach($all as $modele){
             $j = 0;
             $tab[$i]["nom"] = $modele[0];
+            $tab[$i]["url"] = "";
             foreach($modele[2] as $data){
                 $tab[$i]["gamme".$j] = $data->getNom();
                 $j++;
@@ -227,5 +234,56 @@ class DefaultController extends Controller
         $em->flush();
     }
     #endregion
+
+    public function getEtape2($modele, $gamme){
+        $objReturn = [];
+        $m = getIdModele($modele);
+        $g = getIdGamme($g);
+        $objReturn["Modele"] = $m->Nom;
+        $objReturn["Gamme"] = $g->Nom;
+        $objReturn["Module"] = [];
+
+        $repository = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Module')
+       ;
+
+       $repositoryCompo = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Composant')
+       ;
+        $i = 0;
+        $module = $repository->findBy(['Gamme' => $g]);
+        foreach($module as $val){
+            $objReturn["Module"][$i]["Nom"] = $compo->Nom;
+            $compo = $repositoryCompo->findBy(['Module' => $val]);
+            foreach($compo as $c){
+                $objReturn["Module"][$i]["Composant"] = $c;
+            }
+            $i++;
+        }
+
+    }
+
+
+    public function getIdModele($nom){
+        $repository = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Modele')
+       ;
+       return $repository->findBy(['Nom' => $nom])->Id;
+    }
+
+    public function getIdGamme($nom){
+        $repository = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Gamme')
+       ;
+       return $repository->findBy(['Nom' => $nom])->Id;
+    }
 
 }
