@@ -19,14 +19,14 @@ class Matiere
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Matiere", type="string", length=255)
      */
-    private $matiere;
+    public $matiere;
 
     /**
      * @var int

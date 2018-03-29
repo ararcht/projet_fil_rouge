@@ -19,7 +19,7 @@ class Module
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
@@ -33,7 +33,7 @@ class Module
      *
      * @ORM\Column(name="Prix", type="integer")
      */
-    public $prix;
+    private $prix;
 
 
     /**

@@ -19,7 +19,7 @@ class Teinte
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
@@ -33,7 +33,7 @@ class Teinte
      *
      * @ORM\Column(name="Description", type="string", length=255)
      */
-    private $description;
+    public $description;
 
     /**
      * @var int

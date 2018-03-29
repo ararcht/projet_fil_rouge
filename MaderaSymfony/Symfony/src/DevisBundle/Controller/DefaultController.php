@@ -33,7 +33,8 @@ class DefaultController extends Controller
 
         // $user = $this->getUtilisateur(1);
 
-        $nom = $user->getNom();
+        //$nom = $user->getNom();
+        var_dump($this->getEtape2("Maison Ville", "Basique"));
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
 
     }
@@ -42,9 +43,10 @@ class DefaultController extends Controller
      */
     public function resultsAction()
     {
-        $user = $this->getUtilisateur(1);
+        // $this->GenerateBDD();
+        // $arrayModeleGamme = $this->getModeleGamme();
 
-        $nom = $user->getNom();
+        //$nom = $user->getNom();
         $this->getEtape2("Maison Ville", "Basique");
         
         return $this->render('DevisBundle:Default:results.html.twig', array('username' => $nom));
@@ -451,25 +453,22 @@ class DefaultController extends Controller
         $i = 0;
         $module = $repository->findBy(['fk_gamme' => $g]);
         foreach($module as $val){
-            $objReturn["Module"][$i]["Nom"] = $compo->nom;
+            $objReturn["Module"][$i]["Nom"] = $val->nom;
             $compo = $repositoryCompo->findBy(['fk_module' => $val]);
             foreach($compo as $c){
-                var_dump($c->nom);
-                $objReturn["Module"][$i]["Composant"]["Nom"] = $c->nom;
-                $objReturn["Module"][$i]["Composant"]["Prix"] = $c->Prix;
                 $objReturn["Module"][$i]["Composant"]["Nom"] = $c->nom;
                 $objReturn["Module"][$i]["Composant"]["Prix"] = $c->prix;
                 $n = $this->getCompoRef($c);
                 $matiere = $repositoryMatiere->findBy(['fk_composant' => $n]);
                 $j=0;
                 foreach($matiere as $m){
-                    $objReturn["Module"][$i]["Composant"]["Matiere"][$j] = $m->Matiere;
+                    $objReturn["Module"][$i]["Composant"]["Matiere"][$j] = $m->matiere;
                     $j++;
                 }
                 $teinte = $repositoryTeinte->findBy(['fk_composant' => $n]);
                 $j=0;
                 foreach($teinte as $t){
-                    $objReturn["Module"][$i]["Composant"]["Teinte"][$j] = $t->Description;
+                    $objReturn["Module"][$i]["Composant"]["Teinte"][$j] = $t->description;
                     $j++;
                 }
             }
@@ -481,15 +480,15 @@ class DefaultController extends Controller
 
 
     public function getIdModele($nom){
-        $repoModele = $this->getDoctrine()->getRepository(Modele::class)->findOneBy(['nom' => $nom]);
+        return $this->getDoctrine()->getRepository(Modele::class)->findOneBy(['nom' => $nom]);
     }
 
     public function getIdGamme($nom){
-        $repoModele = $this->getDoctrine()->getRepository(Gamme::class)->findOneBy(['nom' => $nom]);
+        return $this->getDoctrine()->getRepository(Gamme::class)->findOneBy(['nom' => $nom]);
     }
 
     public function getCompoRef($c){
-        switch($c->Nom){
+        switch($c->nom){
             case "Porte":
                 return 1;
             case "Fenêtre":
