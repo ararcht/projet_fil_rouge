@@ -8,6 +8,10 @@ use DevisBundle\Entity\Modele;
 use DevisBundle\Entity\Gamme;
 use DevisBundle\Entity\Utilisateur;
 use DevisBundle\Entity\Image;
+use DevisBundle\Entity\Matiere;
+use DevisBundle\Entity\Teinte;
+use DevisBundle\Entity\Module;
+use DevisBundle\Entity\Composant;
 
 class DefaultController extends Controller
 {
@@ -16,7 +20,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        // $this->GenerateBDD();
+         $this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
           // var_dump($result);
@@ -131,7 +135,7 @@ class DefaultController extends Controller
          $test = $this->SetModele("Maison Ecologique", "1", null);
          $test = $this->SetModele("Maison Moderne", "1", null);
          #endregion
- 
+
          #region gamme
          $test = $this->SetGamme("Eco", "1", "3");//1
          $test = $this->SetGamme("Basique", "1", "3");//2
@@ -144,7 +148,7 @@ class DefaultController extends Controller
          $test = $this->SetGamme("Basique", "4", "3");//9
          $test = $this->SetGamme("Premium", "4", "3");//10
          #endregion
- 
+
          #region user
          $test = $this->SetGamme("Eco", "1", "3");
          $test = $this->SetGamme("Basique", "1", "3");
@@ -158,12 +162,12 @@ class DefaultController extends Controller
          $test = $this->SetUtilisateur("Pierre", "Thiebert", "pierre@thiebert.fr", "0666666666", "0232542334", "Pierre", md5("1234"), 1, 1);
          $test = $this->SetUtilisateur("Thomas", "Lepretre", "Thomas@lepretre.fr", "0666666666", "0232542334", "Thomas", md5("1234"), 1, 1);
          #endregion
-         
+
         #region matiere
         //Fenetre = 1
-        $this->setMatiere("PVC",1);
-        $this->setMatiere("Aluminium",1);
-        $this->setMatiere("Bois",1);
+        $this->SetMatiere("PVC",1);
+        $this->SetMatiere("Aluminium",1);
+        $this->SetMatiere("Bois",1);
 
         //Porte = 2
         $this->setMatiere("PVC",2);
@@ -334,6 +338,45 @@ class DefaultController extends Controller
         $m->setNom($name);
         $m->setFkModele($idModele);
         $m->setFkComposant($idComposant);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+
+    public function SetComposant($nom, $longueur, $largeur, $taille, $poids, $stock, $prix, $gamme, $fournisseur, $module, $matiere, $teinte){
+        $m = new Composant();
+        $m->setNom($nom);
+        $m->setLongueur($longueur);
+        $m->setLargeur($largeur);
+        $m->setTaille($taille);
+        $m->setPoids($poids);
+        $m->setStock($stock);
+        $m->setPrix($prix);
+        $m->setFkGamme($gamme);
+        $m->setFkFournisseur($fournisseur);
+        $m->setFkModule($module);
+        $m->setFkMatiere($matiere);
+        $m->setFkTeinte($teinte);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+    public function SetTeinte($codeTeinte, $description, $fk_composant){
+        $m = new Teinte();
+        $m->setCodeTeinte($codeTeinte);
+        $m->setDescription($description);
+        $m->setFkComposant($fk_composant);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+    public function SetMatiere($matiere, $fk_composant){
+        $m = new Matiere();
+        $m->setMatiere($matiere);
+        $m->setFkComposant($fk_composant);
         $em = $this->getDoctrine()->getManager();
         $em->persist($m);
         $em->flush();
