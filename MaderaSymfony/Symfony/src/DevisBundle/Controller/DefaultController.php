@@ -87,10 +87,10 @@ class DefaultController extends Controller
         foreach($modeles as $model){
             $id = $model->getId();
             $arrayTemp[0] = $model->getNom();
-            $url = $model->getFkImage()[0];
-            if($url != null){
-                $arrayTemp[1] = $this->GetImage($url);
-            }
+            // $url = $model->getFkImage()[0];
+            // if($url != null){
+            //     $arrayTemp[1] = $this->GetImage($url);
+            // }
             // var_dump($id);
             $arrayTemp[2] = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme($id);
             // var_dump($arrayTemp[2]);
