@@ -32,28 +32,24 @@ class DefaultController extends Controller
 
       $nom = $user->getNom();
 
+        $nom = $user->getNom();
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
     }
 
     /**
      * @Route("/results")
      */
+    public function resultsAction()
+    {
+        $user = $this->getUtilisateur(1);
 
-     public function resultsAction{
-    return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
-     }
-    // public function menuAction(){
-    //   $user = $this->getUtilisateur(1);
-    //
-    //   $nom = $user->getNom();
-    //
-    //   var_dump($nom);
-    //
-    //   return $this->render('DevisBundle:Default:menu.html.twig', array('username' => $nom));
-    //
-    // }
+        $nom = $user->getNom();
+        $this->getEtape2("Maison Ville", "Basique");
 
-    #region Ecran 1
+        return $this->render('DevisBundle:Default:results.html.twig', array('username' => $nom));
+    }
+
+    #region Ecran Index
     public function GetModeles(){
         $repoModeles = $this->getDoctrine()->getRepository(Modele::class);
         return $repoModeles->findAll();
@@ -177,4 +173,93 @@ class DefaultController extends Controller
         $em->flush();
     }
     #endregion
+
+    #region etape 2
+    public function getEtape2($modele, $gamme){
+        $objReturn = [];
+        $m = $this->getIdModele($modele);
+        $g = $this->getIdGamme($gamme);
+        $objReturn["Modele"] = $modele;
+        $objReturn["Gamme"] = $gamme;
+        $objReturn["Module"] = [];
+
+        #region repo
+        $repository = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Module')
+       ;
+
+       $repositoryCompo = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Composant')
+       ;
+
+       $repositoryMatiere = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Matiere')
+       ;
+
+       $repositoryTeinte = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Teinte')
+       ;
+       #endregion
+        $i = 0;
+        $module = $repository->findBy(['fk_gamme' => $g]);
+        foreach($module as $val){
+            $objReturn["Module"][$i]["Nom"] = $compo->nom;
+            $compo = $repositoryCompo->findBy(['fk_module' => $val]);
+            foreach($compo as $c){
+                var_dump($c->nom);
+                $objReturn["Module"][$i]["Composant"]["Nom"] = $c->nom;
+                $objReturn["Module"][$i]["Composant"]["Prix"] = $c->Prix;
+                $objReturn["Module"][$i]["Composant"]["Nom"] = $c->nom;
+                $objReturn["Module"][$i]["Composant"]["Prix"] = $c->prix;
+                $n = $this->getCompoRef($c);
+                $matiere = $repositoryMatiere->findBy(['fk_composant' => $n]);
+                $j=0;
+                foreach($matiere as $m){
+                    $objReturn["Module"][$i]["Composant"]["Matiere"][$j] = $m->Matiere;
+                    $j++;
+                }
+                $teinte = $repositoryTeinte->findBy(['fk_composant' => $n]);
+                $j=0;
+                foreach($teinte as $t){
+                    $objReturn["Module"][$i]["Composant"]["Teinte"][$j] = $t->Description;
+                    $j++;
+                }
+            }
+            $i++;
+        }
+        var_dump($objReturn);
+        return $objReturn;
+    }
+
+
+    public function getIdModele($nom){
+        $repoModele = $this->getDoctrine()->getRepository(Modele::class)->findOneBy(['nom' => $nom]);
+    }
+
+    public function getIdGamme($nom){
+        $repoModele = $this->getDoctrine()->getRepository(Gamme::class)->findOneBy(['nom' => $nom]);
+    }
+
+    public function getCompoRef($c){
+        switch($c->Nom){
+            case "Porte":
+                return 1;
+            case "Fenêtre":
+                return 2;
+            case "Sol":
+                return 3;
+            case "Toiture":
+                return 4;
+        }
+    }
+    #endregion
+
 }
