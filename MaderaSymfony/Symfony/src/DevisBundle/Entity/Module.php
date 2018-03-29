@@ -66,8 +66,8 @@ class Module
 
     /**
      * @var int
-     * @ORM\Column(name="Gamme", type="integer")
-     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Gamme", mappedBy="Module")
+     * @ORM\Column(name="Modele", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Modele", mappedBy="Module")
      */
     private $fk_modele;
 
