@@ -8,6 +8,10 @@ use DevisBundle\Entity\Modele;
 use DevisBundle\Entity\Gamme;
 use DevisBundle\Entity\Utilisateur;
 use DevisBundle\Entity\Image;
+use DevisBundle\Entity\Matiere;
+use DevisBundle\Entity\Teinte;
+use DevisBundle\Entity\Module;
+use DevisBundle\Entity\Composant;
 
 class DefaultController extends Controller
 {
@@ -16,7 +20,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        // $this->GenerateBDD();
+        $this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
         //   $repository = $this
@@ -249,7 +253,7 @@ class DefaultController extends Controller
     }
 
     public function SetComposant($nom, $longueur, $largeur, $taille, $poids, $stock, $prix, $gamme, $fournisseur, $module, $matiere, $teinte){
-        $m = new Module();
+        $m = new Composant();
         $m->setNom($nom);
         $m->setLongueur($longueur);
         $m->setLargeur($largeur);
