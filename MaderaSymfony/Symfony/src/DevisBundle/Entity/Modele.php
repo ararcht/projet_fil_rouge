@@ -42,17 +42,6 @@ class Modele
      */
     private $fk_Devis;
 
-    /**
-   * @ORM\ManyToMany(targetEntity="DevisBundle\Entity\Gamme", cascade={"persist"})
-   */
-    private $fk_Gamme;
-
-    /**
-    * Many Modele have Many Images.
-   * @ORM\ManyToMany(targetEntity="DevisBundle\Entity\Image", cascade={"persist"})
-   */
-    private $fk_Image;
-
 
 
 

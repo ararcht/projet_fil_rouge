@@ -484,11 +484,14 @@ class DefaultController extends Controller
 
 
     public function getIdModele($nom){
-        $repoModele = $this->getDoctrine()->getRepository(Modele::class)->find();
-        
-        var_dump($repoModele);
-        // $truc = $repoModele->findById(1);
-        var_dump($truc);
+        $repoModele = $this->getDoctrine()->getRepository(Modele::class);
+        $list = $repoModele->findAll();
+        foreach($list as $l){
+            var_dump($l->nom);
+            if($l->Nom == $nom)
+                var_dump($l);
+        }
+        return null;
     }
 
     public function getIdGamme($nom){
