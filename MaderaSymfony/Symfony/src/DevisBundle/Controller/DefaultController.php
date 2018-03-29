@@ -8,6 +8,10 @@ use DevisBundle\Entity\Modele;
 use DevisBundle\Entity\Gamme;
 use DevisBundle\Entity\Utilisateur;
 use DevisBundle\Entity\Image;
+use DevisBundle\Entity\Matiere;
+use DevisBundle\Entity\Teinte;
+use DevisBundle\Entity\Module;
+use DevisBundle\Entity\Composant;
 
 class DefaultController extends Controller
 {
@@ -18,6 +22,9 @@ class DefaultController extends Controller
     {
         //$this->GenerateBDD();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 48563609f6ee7a0887dfd9c134b7ddc3bd1d82e0
         // $arrayModeleGamme = $this->getModeleGamme();
         // $result = $this->GetArray();
         // //   $repository = $this
@@ -32,6 +39,7 @@ class DefaultController extends Controller
 
         //$nom = $user->getNom();
         var_dump($this->getEtape2("Maison Ville", "Basique"));
+<<<<<<< HEAD
 =======
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
@@ -52,17 +60,19 @@ class DefaultController extends Controller
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
 
     }
+=======
+        return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
+>>>>>>> 48563609f6ee7a0887dfd9c134b7ddc3bd1d82e0
 
-    /**
-     * @Route("/results")
-     */
+    }
+    public function resultsAction()
+    {
+        // $this->GenerateBDD();
+        // $arrayModeleGamme = $this->getModeleGamme();
 
-     public function resultsAction(){
-       $user = $this->getUtilisateur(1);
+        return $this->render('DevisBundle:Default:results.html.twig');
+    }
 
-       $nom = $user->getNom();
-       return $this->render('DevisBundle:Default:results.html.twig',array('username' => $nom));
-     }
     // public function menuAction(){
     //   $user = $this->getUtilisateur(1);
     //
@@ -74,16 +84,22 @@ class DefaultController extends Controller
     //
     // }
 
-    #region Ecran 1
+    #region Ecran Index
     public function GetModeles(){
         $repoModeles = $this->getDoctrine()->getRepository(Modele::class);
         return $repoModeles->findAll();
     }
 
-    public function GetGammes($id){
+    public function GetGamme($id){
         $repoGamme = $this->getDoctrine()->getRepository(Gamme::class);
         return $repoGamme->find($id);
     }
+
+    public function GetModele($id){
+        $repoGamme = $this->getDoctrine()->getRepository(Modele::class);
+        return $repoGamme->find($id);
+    }
+
 
     public function GetUtilisateur($id){
      $repository = $this
@@ -95,7 +111,6 @@ class DefaultController extends Controller
      $user = $repository->find($id);
      return $user;
    }
-
 
     public function GetImage($id){
         $repoImg = $this->getDoctrine()->getRepository(Image::class);
@@ -114,8 +129,9 @@ class DefaultController extends Controller
             if($url != null){
                 $arrayTemp[1] = $this->GetImage($url);
             }
-
+            
             $arrayTemp[2] = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme($id);
+            $arrayTemp[3] = $id;
             // var_dump($arrayTemp[2]);
             $array[$i] = $arrayTemp;
             $i++;
@@ -138,6 +154,7 @@ class DefaultController extends Controller
                 $tab[$i]["gamme"][$j]= $data->getNom();
                 $j++;
             }
+            $tab[$i]["id"] = $modele[3];
             $i++;
         }
         return $tab;
@@ -145,12 +162,23 @@ class DefaultController extends Controller
     #endregion
 
 
+    #region Ecran Résultat
+    public function SelectGamme($idGamme){
+
+    }
+
+
+    #endregion
+
     #region Generation BDD
     public function GenerateBDD(){
         #region modele
         $test = $this->SetModele("Maison Ville", "1", null);
         $test = $this->SetModele("Maison Campagne", "1", null);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 48563609f6ee7a0887dfd9c134b7ddc3bd1d82e0
         $test = $this->SetModele("Maison Ecologique", "1", null);
         $test = $this->SetModele("Maison Moderne", "1", null);
         #endregion
@@ -169,6 +197,7 @@ class DefaultController extends Controller
         #endregion
         
         #region user
+<<<<<<< HEAD
 =======
         $test = $this->SetGamme("Eco", "1", "3");
         $test = $this->SetGamme("Basique", "1", "3");
@@ -182,6 +211,8 @@ class DefaultController extends Controller
         $test = $this->SetGamme("Premium", "4", "3");
 
 >>>>>>> e7f8582c0e4c69e84881bf2dc97484b010dd03cd
+=======
+>>>>>>> 48563609f6ee7a0887dfd9c134b7ddc3bd1d82e0
         $test = $this->SetUtilisateur("Alison", "Rarchaert", "alison@rarchaert.fr", "0666666666", "0232542334", "Alison", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Jules", "Ragot", "jules@ragot.pro", "0666666666", "0232542334", "Jules", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Pierre", "Thiebert", "pierre@thiebert.me", "0666666666", "0232542334", "Pierre", md5("1234"), 1, 1);
@@ -321,6 +352,9 @@ class DefaultController extends Controller
         
         #region sol
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 48563609f6ee7a0887dfd9c134b7ddc3bd1d82e0
         $this->setModule("Sol",10000,0,0,1,0);//23        
         $this->setModule("Sol",10000,0,0,2,0);//24        
         $this->setModule("Sol",10000,0,0,3,0);//25    
@@ -332,6 +366,7 @@ class DefaultController extends Controller
         $this->setModule("Sol",10000,0,0,9,0);//31      
         $this->setModule("Sol",10000,0,0,10,0);//32       
         $this->setModule("Sol",10000,0,0,11,0);//33
+<<<<<<< HEAD
 =======
         $this->setModule("Sol",10000,0,0,1,0);
         $this->setModule("Sol",10000,0,0,2,0);
@@ -345,20 +380,22 @@ class DefaultController extends Controller
         $this->setModule("Sol",10000,0,0,10,0);
         $this->setModule("Sol",10000,0,0,11,0);
 >>>>>>> e7f8582c0e4c69e84881bf2dc97484b010dd03cd
+=======
+>>>>>>> 48563609f6ee7a0887dfd9c134b7ddc3bd1d82e0
         #endregion
         
         #region cloison
-        $this->setModule("Cloison",1000,0,0,1,0);
-        $this->setModule("Cloison",1000,0,0,3,0);
-        $this->setModule("Cloison",1000,0,0,2,0);
-        $this->setModule("Cloison",1000,0,0,4,0);
-        $this->setModule("Cloison",1000,0,0,5,0);
-        $this->setModule("Cloison",1000,0,0,6,0);
-        $this->setModule("Cloison",1000,0,0,7,0);
-        $this->setModule("Cloison",1000,0,0,8,0);
-        $this->setModule("Cloison",1000,0,0,9,0);
-        $this->setModule("Cloison",1000,0,0,10,0);
-        $this->setModule("Cloison",1000,0,0,11,0);
+        $this->setModule("Cloison",1000,0,0,1,0);        
+        $this->setModule("Cloison",1000,0,0,3,0);        
+        $this->setModule("Cloison",1000,0,0,2,0);        
+        $this->setModule("Cloison",1000,0,0,4,0);        
+        $this->setModule("Cloison",1000,0,0,5,0);        
+        $this->setModule("Cloison",1000,0,0,6,0);        
+        $this->setModule("Cloison",1000,0,0,7,0);        
+        $this->setModule("Cloison",1000,0,0,8,0);        
+        $this->setModule("Cloison",1000,0,0,9,0);        
+        $this->setModule("Cloison",1000,0,0,10,0);        
+        $this->setModule("Cloison",1000,0,0,11,0);        
         #endregion
 
     }
@@ -398,7 +435,152 @@ class DefaultController extends Controller
         $em->persist($m);
         $em->flush();
     }
+
+    public function SetModule($nom, $prix, $composant, $typemodule, $devis, $gamme){
+        $m = new Module();
+        $m->setNom($nom);
+        $m->setPrix($prix);
+        $m->setFkComposant($composant);
+        $m->setFkTypeModule($typemodule);
+        $m->setFkDevis($devis);
+        $m->setFkGamme($gamme);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+    public function SetComposant($nom, $longueur, $largeur, $taille, $poids, $stock, $prix, $gamme, $fournisseur, $module, $matiere, $teinte){
+        $m = new Composant();
+        $m->setNom($nom);
+        $m->setLongueur($longueur);
+        $m->setLargeur($largeur);
+        $m->setTaille($taille);
+        $m->setPoids($poids);
+        $m->setStock($stock);
+        $m->setPrix($prix);
+        $m->setFkGamme($gamme);
+        $m->setFkFournisseur($fournisseur);
+        $m->setFkModule($module);
+        $m->setFkMatiere($matiere);
+        $m->setFkTeinte($teinte);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+    public function SetTeinte($codeTeinte, $description, $fk_composant){
+        $m = new Teinte();
+        $m->setCodeTeinte($codeTeinte);
+        $m->setDescription($description);
+        $m->setFkComposant($fk_composant);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
+
+    public function SetMatiere($matiere, $fk_composant){
+        $m = new Matiere();
+        $m->setMatiere($matiere);
+        $m->setFkComposant($fk_composant);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($m);
+        $em->flush();
+    }
     #endregion
+
+    #region etape 2
+    public function getEtape2($modele, $gamme){
+        $objReturn = [];
+        $m = $this->getIdModele($modele);
+        $g = $this->getIdGamme($g);
+        $objReturn["Modele"] = $m->Nom;
+        $objReturn["Gamme"] = $g->Nom;
+        $objReturn["Module"] = [];
+
+        #region repo
+        $repository = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Module')
+       ;
+
+       $repositoryCompo = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Composant')
+       ;
+
+       $repositoryMatiere = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Matiere')
+       ;
+
+       $repositoryTeinte = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Teinte')
+       ;
+       #endregion
+        $i = 0;
+        $module = $repository->findBy(['Gamme' => $g]);
+        foreach($module as $val){
+            $objReturn["Module"][$i]["Nom"] = $compo->Nom;
+            $compo = $repositoryCompo->findBy(['Module' => $val]);
+            foreach($compo as $c){
+                $objReturn["Module"][$i]["Composant"]["Nom"] = $c->Nom;
+                $objReturn["Module"][$i]["Composant"]["Prix"] = $c->Prix;
+                $n = $this->getCompoRef($c);
+                $matiere = $repositoryMatiere->findBy(['Composant' => $n]);
+                $j=0;
+                foreach($matiere as $m){
+                    $objReturn["Module"][$i]["Composant"]["Matiere"][$j] = $m->Matiere;
+                    $j++;
+                }
+                $teinte = $repositoryTeinte->findBy(['Composant' => $n]);
+                $j=0;
+                foreach($teinte as $t){
+                    $objReturn["Module"][$i]["Composant"]["Teinte"][$j] = $t->Description;
+                    $j++;
+                }
+            }
+            $i++;
+        }
+        return $objReturn;
+    }
+
+
+    public function getIdModele($nom){
+        $repoModele = $this->getDoctrine()->getRepository(Modele::class)->find();
+        
+        var_dump($repoModele);
+        // $truc = $repoModele->findById(1);
+        var_dump($truc);
+    }
+
+    public function getIdGamme($nom){
+        $repository = $this
+         ->getDoctrine()
+         ->getManager()
+         ->getRepository('DevisBundle:Gamme')
+       ;
+       return $repository->findBy(['Nom' => $nom])->Id;
+    }
+
+    public function getCompoRef($c){
+        switch($c->Nom){
+            case "Porte":
+                return 1;
+            case "Fenetre":
+                return 2;
+            case "Sol":
+                return 3;  
+            case "Toiture":
+                return 4;
+        }
+    }
+    #endregion
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     #region etape 2
@@ -496,4 +678,7 @@ class DefaultController extends Controller
 
 =======
 >>>>>>> e7f8582c0e4c69e84881bf2dc97484b010dd03cd
+=======
+
+>>>>>>> 48563609f6ee7a0887dfd9c134b7ddc3bd1d82e0
 }
