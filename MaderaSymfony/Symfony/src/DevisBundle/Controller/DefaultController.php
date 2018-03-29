@@ -33,7 +33,11 @@ class DefaultController extends Controller
 
         // $user = $this->getUtilisateur(1);
 
+<<<<<<< HEAD
         //$nom = $user->getNom();
+=======
+        $nom = $user->getNom();
+>>>>>>> 576ffcf6f41ee5a21d96f309bb69b49d927cc55d
         var_dump($this->getEtape2("Maison Ville", "Basique"));
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
 
@@ -467,8 +471,13 @@ class DefaultController extends Controller
             $objReturn["Module"][$i]["Nom"] = $compo->Nom;
             $compo = $repositoryCompo->findBy(['Module' => $val]);
             foreach($compo as $c){
+<<<<<<< HEAD
                 $objReturn["Module"][$i]["Composant"]["Nom"] = $c->Nom;
                 $objReturn["Module"][$i]["Composant"]["Prix"] = $c->Prix;
+=======
+                $objReturn["Module"][$i]["Composant"]["Nom"] = $c->nom;
+                $objReturn["Module"][$i]["Composant"]["Prix"] = $c->prix;
+>>>>>>> 576ffcf6f41ee5a21d96f309bb69b49d927cc55d
                 $n = $this->getCompoRef($c);
                 $matiere = $repositoryMatiere->findBy(['Composant' => $n]);
                 $j=0;
@@ -490,8 +499,12 @@ class DefaultController extends Controller
 
 
     public function getIdModele($nom){
+<<<<<<< HEAD
         $repoModele = $this->getDoctrine()->getRepository(Modele::class)->findOneBy(['nom' => $nom]);
 
+=======
+        return $this->getDoctrine()->getRepository(Modele::class)->findOneBy(["nom" => $nom])->id;
+>>>>>>> 576ffcf6f41ee5a21d96f309bb69b49d927cc55d
     }
 
     public function getIdGamme($nom){
