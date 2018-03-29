@@ -21,8 +21,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         //$this->GenerateBDD();
-        // $arrayModeleGamme = $this->getModeleGamme();
-        // $result = $this->GetArray();
+        $result = $this->GetArray();
         // //   $repository = $this
         // //     ->getDoctrine()
         // //     ->getManager()
@@ -31,15 +30,15 @@ class DefaultController extends Controller
         // //
         // // $ListModele = $repository->findAll();
 
-        // $user = $this->getUtilisateur(1);
+        $user = $this->getUtilisateur(1);
 
-        //$nom = $user->getNom();
-        var_dump($this->getEtape2("Maison Ville", "Basique"));
+        $nom = $user->getNom();
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
-
+        
     }
     public function resultsAction()
     {
+        $this->getEtape2("Maison Ville", "Basique");
         // $this->GenerateBDD();
         // $arrayModeleGamme = $this->getModeleGamme();
 
@@ -98,19 +97,17 @@ class DefaultController extends Controller
         foreach($modeles as $model){
             $id = $model->getId();
             $arrayTemp[0] = $model->getNom();
-            $url = $model->getFkImage()[0];
-            if($url != null){
-                $arrayTemp[1] = $this->GetImage($url);
-            }
-
+            // $url = $model->getFkImage()[0];
+            // if($url != null){
+            //     $arrayTemp[1] = $this->GetImage($url);
+            // }
+            
             $arrayTemp[2] = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme($id);
             $arrayTemp[3] = $id;
-            // var_dump($arrayTemp[2]);
             $array[$i] = $arrayTemp;
             $i++;
 
         }
-        // var_dump($array);
         return $array;
     }
 
@@ -151,7 +148,7 @@ class DefaultController extends Controller
         $test = $this->SetModele("Maison Ecologique", "1", null);
         $test = $this->SetModele("Maison Moderne", "1", null);
         #endregion
-
+        
         #region gamme
         $test = $this->SetGamme("Eco", "1", "3");//1
         $test = $this->SetGamme("Basique", "1", "3");//2
@@ -164,50 +161,50 @@ class DefaultController extends Controller
         $test = $this->SetGamme("Basique", "4", "3");//9
         $test = $this->SetGamme("Premium", "4", "3");//10
         #endregion
-
+        
         #region user
         $test = $this->SetUtilisateur("Alison", "Rarchaert", "alison@rarchaert.fr", "0666666666", "0232542334", "Alison", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Jules", "Ragot", "jules@ragot.pro", "0666666666", "0232542334", "Jules", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Pierre", "Thiebert", "pierre@thiebert.me", "0666666666", "0232542334", "Pierre", md5("1234"), 1, 1);
         $test = $this->SetUtilisateur("Thomas", "Lepretre", "Thomas@lepretre.fr", "0666666666", "0232542334", "Thomas", md5("1234"), 1, 1);
         #endregion
-
+        
         #region matiere
         //Fenetre = 1
         $this->setMatiere("PVC",1);
         $this->setMatiere("Aluminium",1);
         $this->setMatiere("Bois",1);
-
+        
         //Porte = 2
         $this->setMatiere("PVC",2);
         $this->setMatiere("Bois",1);
         $this->setMatiere("Verre",1);
-
+        
 
         //Sol = 3
         $this->setMatiere("Parquet",3);
         $this->setMatiere("Stratifie",3);
         $this->setMatiere("Carrelage",3);
         $this->setMatiere("Lino",3);
-
+        
         //Toiture = 4
         $this->setMatiere("Tuile",4);
         $this->setMatiere("Ardoise",4);
-        $this->setMatiere("Chaume",4);
+        $this->setMatiere("Chaume",4);        
         #endregion
-
+        
         #region Teinte
         //Fenetre = 1
         $this->SetTeinte("1","Bois",1);
         $this->SetTeinte("1","Blanc",1);
         $this->SetTeinte("1","Naturelle",1);
-
+        
         //Porte = 2
         $this->SetTeinte("1","Bois",2);
         $this->SetTeinte("1","Blanc",2);
         $this->SetTeinte("1","Noir",2);
         $this->SetTeinte("1","Naturelle",2);
-
+        
         //Sol = 3
         $this->SetTeinte("1","Bois", 3);
         $this->SetTeinte("1","Gris",3);
@@ -216,7 +213,7 @@ class DefaultController extends Controller
 
         //Toiture = 4
         $this->SetTeinte("1","Naturelle",4);
-
+        
         #endregion
 
         #region fenetre
@@ -232,7 +229,7 @@ class DefaultController extends Controller
         $this->SetComposant("Fenêtre", 100, 150,0,22,493, 350,3,1,10,7,6);//10
         $this->SetComposant("Fenêtre", 100, 150,0,22,493, 350,3,1,11,7,6);//11
         #endregion
-
+        
         #region Porte
         $this->SetComposant("Porte", 200, 90,0,15,800, 40,1,1,1,9,7);//12
         $this->SetComposant("Porte", 200, 90,0,15,850, 60,2,1,2,6,5);//13
@@ -246,7 +243,7 @@ class DefaultController extends Controller
         $this->SetComposant("Porte", 200, 90,0,15,850, 80,3,1,10,7,6);//21
         $this->SetComposant("Porte", 200, 90,0,15,850, 80,3,1,11,7,6);//22
         #endregion
-
+        
         #region Sol
         $this->SetComposant("Sol", 0, 0, 80, 1 ,10000, 800,1,1,23,6,7);//23
         $this->SetComposant("Sol", 0, 0, 80, 1 ,10000, 800,1,1,24,6,7);//24
@@ -260,7 +257,7 @@ class DefaultController extends Controller
         $this->SetComposant("Sol", 0, 0, 80, 1 ,10000, 800,1,1,32,6,7);//32
         $this->SetComposant("Sol", 0, 0, 80, 1 ,10000, 800,1,1,33,6,7);//33
         #endregion
-
+       
         #region Toiture
         $this->SetComposant("Toiture", 0, 0, 80, 1 ,100000, 800,1,1,12,6,7);//23
         $this->SetComposant("Toiture", 0, 0, 80, 1 ,100000, 800,1,1,13,6,7);//24
@@ -277,58 +274,58 @@ class DefaultController extends Controller
 
         #region mur
         $this->setModule("Mur",5000,0,0,1,1);//1
-        $this->setModule("Mur",5000,0,0,2,1);//2
-        $this->setModule("Mur",5000,0,0,3,1);//3
-        $this->setModule("Mur",5000,0,0,4,1);//4
-        $this->setModule("Mur",5000,0,0,5,1);//5
-        $this->setModule("Mur",5000,0,0,6,1);//6
-        $this->setModule("Mur",5000,0,0,7,1);//7
-        $this->setModule("Mur",5000,0,0,8,1);//8
-        $this->setModule("Mur",5000,0,0,9,1);//9
-        $this->setModule("Mur",5000,0,0,10,1);//10
-        $this->setModule("Mur",5000,0,0,11,1);//11
+        $this->setModule("Mur",5000,0,0,2,2);//2
+        $this->setModule("Mur",5000,0,0,3,3);//3
+        $this->setModule("Mur",5000,0,0,4,4);//4
+        $this->setModule("Mur",5000,0,0,5,5);//5
+        $this->setModule("Mur",5000,0,0,6,6);//6
+        $this->setModule("Mur",5000,0,0,7,7);//7
+        $this->setModule("Mur",5000,0,0,8,8);//8
+        $this->setModule("Mur",5000,0,0,9,9);//9
+        $this->setModule("Mur",5000,0,0,10,10);//10
+        $this->setModule("Mur",5000,0,0,11,11);//11
         #endregion
-
+        
         #region toiture
-        $this->setModule("Toiture",10000,0,0,1,0);//12
-        $this->setModule("Toiture",10000,0,0,2,0);//13
-        $this->setModule("Toiture",10000,0,0,3,0);//14
-        $this->setModule("Toiture",10000,0,0,4,0);//15
-        $this->setModule("Toiture",10000,0,0,5,0);//16
-        $this->setModule("Toiture",10000,0,0,6,0);//17
-        $this->setModule("Toiture",10000,0,0,7,0);//18
-        $this->setModule("Toiture",10000,0,0,8,0);//19
-        $this->setModule("Toiture",10000,0,0,9,0);//20
-        $this->setModule("Toiture",10000,0,0,10,0);//21
-        $this->setModule("Toiture",10000,0,0,11,0);//22
+        $this->setModule("Toiture",10000,0,0,1,1);//12
+        $this->setModule("Toiture",10000,0,0,2,2);//13
+        $this->setModule("Toiture",10000,0,0,3,3);//14
+        $this->setModule("Toiture",10000,0,0,4,4);//15
+        $this->setModule("Toiture",10000,0,0,5,5);//16
+        $this->setModule("Toiture",10000,0,0,6,6);//17
+        $this->setModule("Toiture",10000,0,0,7,7);//18
+        $this->setModule("Toiture",10000,0,0,8,8);//19
+        $this->setModule("Toiture",10000,0,0,9,9);//20
+        $this->setModule("Toiture",10000,0,0,10,10);//21
+        $this->setModule("Toiture",10000,0,0,11,11);//22
         #endregion
-
+        
         #region sol
-        $this->setModule("Sol",10000,0,0,1,0);//23
-        $this->setModule("Sol",10000,0,0,2,0);//24
-        $this->setModule("Sol",10000,0,0,3,0);//25
-        $this->setModule("Sol",10000,0,0,4,0);//26
-        $this->setModule("Sol",10000,0,0,5,0);//27
-        $this->setModule("Sol",10000,0,0,6,0);//28
-        $this->setModule("Sol",10000,0,0,7,0);//29
-        $this->setModule("Sol",10000,0,0,8,0);//30
-        $this->setModule("Sol",10000,0,0,9,0);//31
-        $this->setModule("Sol",10000,0,0,10,0);//32
-        $this->setModule("Sol",10000,0,0,11,0);//33
+        $this->setModule("Sol",10000,0,0,1,1);//23        
+        $this->setModule("Sol",10000,0,0,2,2);//24        
+        $this->setModule("Sol",10000,0,0,3,3);//25    
+        $this->setModule("Sol",10000,0,0,4,4);//26
+        $this->setModule("Sol",10000,0,0,5,5);//27      
+        $this->setModule("Sol",10000,0,0,6,6);//28      
+        $this->setModule("Sol",10000,0,0,7,7);//29      
+        $this->setModule("Sol",10000,0,0,8,8);//30      
+        $this->setModule("Sol",10000,0,0,9,9);//31      
+        $this->setModule("Sol",10000,0,0,10,10);//32       
+        $this->setModule("Sol",10000,0,0,11,11);//33
         #endregion
-
+        
         #region cloison
-        $this->setModule("Cloison",1000,0,0,1,0);
-        $this->setModule("Cloison",1000,0,0,3,0);
-        $this->setModule("Cloison",1000,0,0,2,0);
-        $this->setModule("Cloison",1000,0,0,4,0);
-        $this->setModule("Cloison",1000,0,0,5,0);
-        $this->setModule("Cloison",1000,0,0,6,0);
-        $this->setModule("Cloison",1000,0,0,7,0);
-        $this->setModule("Cloison",1000,0,0,8,0);
-        $this->setModule("Cloison",1000,0,0,9,0);
-        $this->setModule("Cloison",1000,0,0,10,0);
-        $this->setModule("Cloison",1000,0,0,11,0);
+        $this->setModule("Cloison",1000,0,0,1,1);        
+        $this->setModule("Cloison",1000,0,0,3,3);        
+        $this->setModule("Cloison",1000,0,0,2,2);        
+        $this->setModule("Cloison",1000,0,0,4,4);        
+        $this->setModule("Cloison",1000,0,0,5,5);        
+        $this->setModule("Cloison",1000,0,0,6,6);        
+        $this->setModule("Cloison",1000,0,0,7,7);        
+        $this->setModule("Cloison",1000,0,0,8,8);        
+        $this->setModule("Cloison",1000,0,0,9,9);        
+        $this->setModule("Cloison",1000,0,0,10,10);        
+        $this->setModule("Cloison",1000,0,0,11,11);        
         #endregion
 
     }
@@ -425,9 +422,9 @@ class DefaultController extends Controller
     public function getEtape2($modele, $gamme){
         $objReturn = [];
         $m = $this->getIdModele($modele);
-        $g = $this->getIdGamme($g);
-        $objReturn["Modele"] = $m->Nom;
-        $objReturn["Gamme"] = $g->Nom;
+        $g = $this->getIdGamme($gamme);
+        $objReturn["Modele"] = $modele;
+        $objReturn["Gamme"] = $gamme;
         $objReturn["Module"] = [];
 
         #region repo
@@ -456,21 +453,23 @@ class DefaultController extends Controller
        ;
        #endregion
         $i = 0;
-        $module = $repository->findBy(['Gamme' => $g]);
+        $module = $repository->findBy(['fk_gamme' => $g]);
+
         foreach($module as $val){
-            $objReturn["Module"][$i]["Nom"] = $compo->Nom;
-            $compo = $repositoryCompo->findBy(['Module' => $val]);
+            $objReturn["Module"][$i]["Nom"] = $val->nom;
+            $compo = $repositoryCompo->findBy(['fk_module' => $val]);
             foreach($compo as $c){
-                $objReturn["Module"][$i]["Composant"]["Nom"] = $c->Nom;
-                $objReturn["Module"][$i]["Composant"]["Prix"] = $c->Prix;
+                var_dump($c->nom);
+                $objReturn["Module"][$i]["Composant"]["Nom"] = $c->nom;
+                $objReturn["Module"][$i]["Composant"]["Prix"] = $c->prix;
                 $n = $this->getCompoRef($c);
-                $matiere = $repositoryMatiere->findBy(['Composant' => $n]);
+                $matiere = $repositoryMatiere->findOneBy(['fk_composant' => $n]);
                 $j=0;
                 foreach($matiere as $m){
                     $objReturn["Module"][$i]["Composant"]["Matiere"][$j] = $m->Matiere;
                     $j++;
                 }
-                $teinte = $repositoryTeinte->findBy(['Composant' => $n]);
+                $teinte = $repositoryTeinte->findOneBy(['fk_composant' => $n]);
                 $j=0;
                 foreach($teinte as $t){
                     $objReturn["Module"][$i]["Composant"]["Teinte"][$j] = $t->Description;
@@ -484,28 +483,27 @@ class DefaultController extends Controller
 
 
     public function getIdModele($nom){
+<<<<<<< HEAD
         $repoModele = $this->getDoctrine()->getRepository(Modele::class)->findOneBy(['nom' => $nom]);
         // $truc = $repoModele->findById(1);
         var_dump($repoModele->id);
+=======
+        return $this->getDoctrine()->getRepository(Modele::class)->findOneBy(["nom" => $nom])->id;
+>>>>>>> a5391bb8be674e0c82b31d234635290a9e9b060d
     }
 
     public function getIdGamme($nom){
-        $repository = $this
-         ->getDoctrine()
-         ->getManager()
-         ->getRepository('DevisBundle:Gamme')
-       ;
-       return $repository->findBy(['Nom' => $nom])->Id;
+        return $this->getDoctrine()->getRepository(Gamme::class)->findOneBy(["nom" => $nom])->id;
     }
 
     public function getCompoRef($c){
-        switch($c->Nom){
+        switch($c->nom){
             case "Porte":
                 return 1;
-            case "Fenetre":
+            case "Fenêtre":
                 return 2;
             case "Sol":
-                return 3;
+                return 3;  
             case "Toiture":
                 return 4;
         }

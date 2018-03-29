@@ -26,7 +26,7 @@ class Composant
      *
      * @ORM\Column(name="Nom", type="string", length=255)
      */
-    private $nom;
+    public $nom;
 
     /**
      * @var int
@@ -68,7 +68,7 @@ class Composant
      *
      * @ORM\Column(name="Prix", type="integer")
      */
-    private $prix;
+    public $prix;
 
     /**
      * @var int
