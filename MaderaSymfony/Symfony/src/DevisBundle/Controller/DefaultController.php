@@ -42,7 +42,7 @@ class DefaultController extends Controller
     public function resultsAction(Request $request)
     {
       $test = $request->request->get('Gamme');
-       var_dump($test);
+       // var_dump($test);
         // $this->GenerateBDD();
         // $arrayModeleGamme = $this->getModeleGamme();
 $user = $this->getUtilisateur(1);
