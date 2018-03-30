@@ -92,6 +92,7 @@ $user = $this->getUtilisateur(1);
         foreach($modeles as $model){
             $id = $model->getId();
             $arrayTemp[0] = $model->getNom();
+            
             $arrayTemp[1] = $url[$j];
             $j++;
             // $url = $model->getFkImage()[0];
@@ -115,7 +116,7 @@ $user = $this->getUtilisateur(1);
         foreach($all as $modele){
             $j = 0;
             $tab[$i]["nom"] = $modele[0];
-            $tab[$i]['url'] = '';
+            $tab[$i]['url'] = $modele[1];
             foreach($modele[2] as $data){
                 $tab[$i]["gamme"][$j]= $data->getNom();
                 $j++;

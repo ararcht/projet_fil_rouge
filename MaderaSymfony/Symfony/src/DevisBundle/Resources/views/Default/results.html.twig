@@ -51,7 +51,7 @@
                                     <td> {{ Module.Nom }} </td>
                                     <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
                                     <td>
-                                      <input id="checkbox" type="checkbox" checked>
+                                      <input id="checkbox{{ Module.Nom }}" type="checkbox" checked>
                                     </td>
                                   </tr>
                                 {% endfor %}
@@ -65,8 +65,8 @@
                           </div>
 
                           <div class="col-md-5">
-                            <div class="panel panel-default">
                             {% for Module in results['Module'] %}
+                              <div class="panel panel-default" id="panel{{ Module.Nom }}">
                               <div class="panel-heading">
                                 <div class="row">
 
@@ -94,17 +94,15 @@
                                       {% for element in bidule['Teinte'] %}
                                       <option>{{ element}}</option>
                                       {% endfor %}
-                                      <td scope="row"><select class="selectpicker">
-                                      <option>1</option>
+                                      <td scope="row"><select class="selectpicker selectUnite" id="optionCompo{{ bidule['Nom']}}">
+                                      <option>0</option>
+                                      <option selected>1</option>
                                       <option>2</option>
                                       <option>3</option>
                                       <option>4</option>
                                       <option>5</option>
                                       </td>
-                                      <td> {{ bidule['Prix']}} €</td>
-                                      <td>
-                                        <input id="checkbox" type="checkbox">
-                                      </td>
+                                      <td><span class="selectPrix" id="prixCompo{{ bidule['Nom']}}">{{ bidule['Prix']}}</span> € / unité</td>
                                     </tr>
                                   {% endfor %}
                                     {% endfor %}
@@ -114,8 +112,8 @@
                                 </table>
                                 </div>
                                 </div>
-                                {% endfor %}
                             </div>
+                                {% endfor %}
 
 
                           </div>
@@ -183,7 +181,7 @@
                                 </div>
                                 <div class="row">
                                   <div class="col-md-12">
-                                    Prix total : <strong>25 523€</strong>
+                                    Prix total : <strong><span id="prix">100000</span>€</strong>
                                   </div>
                                 </div>
                                 <div class="row">
