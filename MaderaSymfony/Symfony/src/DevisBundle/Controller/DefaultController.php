@@ -44,8 +44,8 @@ class DefaultController extends Controller
         // $arrayModeleGamme = $this->getModeleGamme();
 
         //$nom = $user->getNom();
-        $this->getEtape2("Maison Ville", "Basique");
-
+        $result = $this->getEtape2("Maison Ville", "Basique");
+        var_dump($result);
         return $this->render('DevisBundle:Default:results.html.twig', array('username' => $nom));
     }
 
@@ -435,28 +435,32 @@ class DefaultController extends Controller
          ->getRepository('DevisBundle:Teinte')
        ;
        #endregion
+        
         $i = 0;
+        $k = 0;
         $module = $repository->findBy(['fk_gamme' => $g]);
         foreach($module as $val){
             $objReturn["Module"][$i]["Nom"] = $val->nom;
             $compo = $repositoryCompo->findBy(['fk_module' => $val]);
             foreach($compo as $c){
-                $objReturn["Module"][$i]["Composant"]["Nom"] = $c->nom;
-                $objReturn["Module"][$i]["Composant"]["Prix"] = $c->prix;
+                $objReturn["Module"][$i]["Composant"][$k]["Nom"] = $c->nom;
+                $objReturn["Module"][$i]["Composant"][$k]["Prix"] = $c->prix;
                 $n = $this->getCompoRef($c);
                 $matiere = $repositoryMatiere->findBy(['fk_composant' => $n]);
                 $j=0;
-                foreach($matiere as $m){
-                    $objReturn["Module"][$i]["Composant"]["Matiere"][$j] = $m->matiere;
+                    foreach($matiere as $m){
+                    $objReturn["Module"][$i]["Composant"][$k]["Matiere"][$j] = $m->matiere;
                     $j++;
                 }
                 $teinte = $repositoryTeinte->findBy(['fk_composant' => $n]);
                 $j=0;
                 foreach($teinte as $t){
-                    $objReturn["Module"][$i]["Composant"]["Teinte"][$j] = $t->description;
+                    $objReturn["Module"][$i]["Composant"][$k]["Teinte"][$j] = $t->description;
                     $j++;
                 }
+                $k++;
             }
+            $k = 0;
             $i++;
         }
         return $objReturn;
