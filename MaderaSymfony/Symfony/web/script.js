@@ -10,7 +10,7 @@ $(".modulePanel").on('click', function(){
 });
 
 
-$(".selectUnite").on('change', function(){
+$(".selectUnite").each( function(){
     var id = $(this).attr("id");
     var unit = $("#"+id).find(":selected").text();
     var idPrix = "prixCompo"+id.split("Compo")[1];
@@ -23,3 +23,18 @@ $(".selectUnite").on('change', function(){
     $("#prix").text(total);
 });
 
+
+$(".selectUnite").change(function() {
+  var total = 50000;
+  $(".selectUnite").each( function(){
+      var id = $(this).attr("id");
+      var unit = $("#"+id).find(":selected").text();
+      var idPrix = "prixCompo"+id.split("Compo")[1];
+      var prix = $("#"+idPrix).text();
+      var price = prix * unit;
+      var p1 = parseInt(price);
+      var p2 = parseInt(total);
+      total = p1 + p2;
+      $("#prix").text(total);
+  });
+});
