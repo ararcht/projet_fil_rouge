@@ -21,5 +21,15 @@ $(".selectUnite").on('change', function(){
     var p2 = parseInt(total);
     total = p1 + p2;
     $("#prix").text(total);
+    getSelectedOption();
 });
 
+function getSelectedOption(){
+    var count = 0;
+    var listvalue = $(".selectUnite").find(":selected").text();
+    for (let index = 0; index < listvalue.length; index++) {
+        count = count +parseInt(listvalue[index]);
+        
+    }
+    $("#nOpt").text(count);   
+}
