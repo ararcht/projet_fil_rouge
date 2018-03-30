@@ -42,7 +42,7 @@ class DefaultController extends Controller
     public function resultsAction(Request $request)
     {
       $test = $request->request->get('name');
-      var_dump($test);
+      // var_dump($test);
         // $this->GenerateBDD();
         // $arrayModeleGamme = $this->getModeleGamme();
 $user = $this->getUtilisateur(1);
@@ -95,7 +95,7 @@ $user = $this->getUtilisateur(1);
         foreach($modeles as $model){
             $id = $model->getId();
             $arrayTemp[0] = $model->getNom();
-            
+
             $arrayTemp[1] = $url[$j];
             $j++;
             // $url = $model->getFkImage()[0];
