@@ -4,6 +4,10 @@
   padding: 20px;
   box-shadow: 1px 1px 5px #555;
 }
+.imgpreview:hover{
+  background-color: yellow;
+}
+
 .flex-parent{
   display:flex;
 }
@@ -30,4 +34,8 @@
 .navbar-form .form-group {
     display:none;
   }
+}
+
+.nopd{
+  padding: 0 !important;
 }

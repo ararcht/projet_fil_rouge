@@ -42,52 +42,42 @@
               </tr>
             </thead>
             <tbody>
+
               <tr>
                 <td>Panneau en bois</td>
+                {% for element in modele.gamme %}
                 <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
-                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+                {% endfor %}
               </tr>
               <tr>
                 <td>Fenetre en PVC</td>
-                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
-                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+                {% for element in modele.gamme %}
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-plus"></span></td>
+                {% endfor %}
               </tr>
               <tr>
                 <td>Volets en bois</td>
-                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
-                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
-              </tr><tr>
-                <td>Couverture tuiles</td>
-                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                <td class="text-center"><span class="glyphicon glyphicon-plus"></span>En option</td>
-                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+                {% for element in modele.gamme %}
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-plus"></span></td>
+                {% endfor %}
               </tr>
               <tr>
                 <td>Couverture chaume</td>
-                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                <td class="text-center"><span class="glyphicon glyphicon-plus"></span>En option</td>
-                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
+                {% for element in modele.gamme %}
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-remove"></span></td>
+                {% endfor %}
               </tr>
+
+
               <tr>
-                <td>Cheminé brique</td>
-                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                <td class="text-center"><span class="glyphicon glyphicon-plus"></span>En option</td>
-                <td class="text-center"><span class="glyphicon glyphicon-remove"></span></td>
-              </tr>
-              <tr>
+
                 <td></td>
-                <td class="text-center"><div class="col-md-12"><a href="resultat.html">
+                {% for element in modele.gamme %}
+                <td class="text-center"><div class="col-md-12"><a href="/results">
                   <input class="btn btn-secondary" type="button" value="Choisir cette gamme"></a>
                 </div></td>
-                <td class="text-center"><div class="col-md-12"><a href="resultat.html">
-                  <input class="btn btn-secondary" type="button" value="Choisir cette gamme"></a>
-                </div></td>
-                <td class="text-center"><div class="col-md-12"><a href="resultat.html">
-                  <input class="btn btn-secondary" type="button" value="Choisir cette gamme"></a>
-                </div></td>
+                {% endfor %}
+
               </tr>
             </tbody>
           </table>

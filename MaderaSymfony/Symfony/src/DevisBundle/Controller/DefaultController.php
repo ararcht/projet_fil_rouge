@@ -42,11 +42,11 @@ class DefaultController extends Controller
     {
         // $this->GenerateBDD();
         // $arrayModeleGamme = $this->getModeleGamme();
-
-        //$nom = $user->getNom();
+$user = $this->getUtilisateur(1);
+        $nom = $user->getNom();
         $result = $this->getEtape2("Maison Ville", "Basique");
-        var_dump($result);
-        return $this->render('DevisBundle:Default:results.html.twig', array('username' => $nom));
+      //  var_dump($result);
+        return $this->render('DevisBundle:Default:results.html.twig', array('username' => $nom, 'results' =>$result));
     }
 
     #region Ecran Index
@@ -126,7 +126,7 @@ class DefaultController extends Controller
          $test = $this->SetModele("Maison Ecologique", "1", null);
          $test = $this->SetModele("Maison Moderne", "1", null);
          #endregion
- 
+
          #region gamme
          $test = $this->SetGamme("Eco", "1", "3");//1
          $test = $this->SetGamme("Basique", "1", "3");//2
@@ -139,7 +139,7 @@ class DefaultController extends Controller
          $test = $this->SetGamme("Basique", "4", "3");//9
          $test = $this->SetGamme("Premium", "4", "3");//10
          #endregion
- 
+
          #region user
          $test = $this->SetGamme("Eco", "1", "3");
          $test = $this->SetGamme("Basique", "1", "3");
@@ -153,7 +153,7 @@ class DefaultController extends Controller
          $test = $this->SetUtilisateur("Pierre", "Thiebert", "pierre@thiebert.fr", "0666666666", "0232542334", "Pierre", md5("1234"), 1, 1);
          $test = $this->SetUtilisateur("Thomas", "Lepretre", "Thomas@lepretre.fr", "0666666666", "0232542334", "Thomas", md5("1234"), 1, 1);
          #endregion
-         
+
         #region matiere
         //Fenetre = 1
         $this->setMatiere("PVC",1);
@@ -435,7 +435,7 @@ class DefaultController extends Controller
          ->getRepository('DevisBundle:Teinte')
        ;
        #endregion
-        
+
         $i = 0;
         $k = 0;
         $module = $repository->findBy(['fk_gamme' => $g]);
