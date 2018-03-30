@@ -82,9 +82,18 @@ class DefaultController extends Controller
         $array = array();
         $arrayTemp = array();
         $i = 0;
+        $j = 0;
+        $url = [
+            "ext1.png",
+            "ext2.png",
+            "ext3.png",
+            "ext4.png"
+        ];
         foreach($modeles as $model){
             $id = $model->getId();
             $arrayTemp[0] = $model->getNom();
+            $arrayTemp[1] = $url[$j];
+            $j++;
             // $url = $model->getFkImage()[0];
             // if($url != null){
             //     $arrayTemp[1] = $this->GetImage($url);
