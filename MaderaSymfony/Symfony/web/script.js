@@ -1,11 +1,14 @@
-$("#checkboxMur").on('click', function(){
-    if(this.checked){
-        $("#panelMur").show();
+$(".modulePanel").on('click', function(){
+    var id = $(this).attr("id");
+    var module = "panel"+id.split("box")[1];
+    if($("#"+id).is(':checked')){
+        $("#"+module).show();
 
     }else{
-        $("#panelMur").hide();
+        $("#"+module).hide();
     }
 });
+
 
 $(".selectUnite").on('change', function(){
     var id = $(this).attr("id");

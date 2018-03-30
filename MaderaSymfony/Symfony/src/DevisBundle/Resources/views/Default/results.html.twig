@@ -48,7 +48,7 @@
                                     <td> {{ Module.Nom }} </td>
                                     <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
                                     <td>
-                                      <input id="checkbox{{ Module.Nom }}" type="checkbox" checked>
+                                      <input class="modulePanel" id="checkbox{{ Module.Nom }}" type="checkbox" checked>
                                     </td>
                                   </tr>
                                 {% endfor %}
@@ -63,7 +63,7 @@
 
                           <div class="col-md-5">
                             {% for Module in results['Module'] %}
-                              <div class="panel panel-default" id="panel{{ Module.Nom }}">
+                              <div class="panel panel-default" id="panel{{ Module.Nom }}" >
                               <div class="panel-heading">
                                 <div class="row">
 
