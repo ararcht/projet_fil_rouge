@@ -30,7 +30,7 @@ class DefaultController extends Controller
       $user = $this->getUtilisateur(1);
 
       $nom = $user->getNom();
-
+// var_dump($nom);
         //$nom = $user->getNom();
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
     }
@@ -84,10 +84,10 @@ $user = $this->getUtilisateur(1);
         $i = 0;
         $j = 0;
         $url = [
-            "ext1.png",
-            "ext2.png",
-            "ext3.png",
-            "ext4.png"
+            "ext1.jpg",
+            "ext2.jpg",
+            "ext3.jpg",
+            "ext4.jpg"
         ];
         foreach($modeles as $model){
             $id = $model->getId();
