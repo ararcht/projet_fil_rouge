@@ -23,7 +23,10 @@ class DefaultController extends Controller
          //$this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
+<<<<<<< HEAD
       //     var_dump($result);
+=======
+>>>>>>> 5bfcc13caeb15eb193a34771f8f834f7ef9c25d3
       //   $repository = $this
       //     ->getDoctrine()
       //     ->getManager()
@@ -37,7 +40,10 @@ class DefaultController extends Controller
       $nom = $user->getNom();
 
         //$nom = $user->getNom();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5bfcc13caeb15eb193a34771f8f834f7ef9c25d3
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
     }
 
@@ -95,14 +101,11 @@ class DefaultController extends Controller
             // if($url != null){
             //     $arrayTemp[1] = $this->GetImage($url);
             // }
-            // var_dump($id);
             $arrayTemp[2] = $this->getDoctrine()->getManager()->getRepository('DevisBundle:Gamme')->GetGamme($id);
-            // var_dump($arrayTemp[2]);
             $array[$i] = $arrayTemp;
             $i++;
 
         }
-        // var_dump($array);
         return $array;
     }
 
@@ -470,7 +473,6 @@ class DefaultController extends Controller
             }
             $i++;
         }
-        var_dump($objReturn);
         return $objReturn;
     }
 
