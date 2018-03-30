@@ -29,7 +29,9 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-md-12">
-                Gamme
+
+                {{results['Modele']}}
+
               </div>
             </div>
           </div>
@@ -38,44 +40,22 @@
               <thead>
                 <tr>
                   <th>Modules</th>
-                  <th class="text-center" scope="row">Premium</th>
+                  <th class="text-center" scope="row">{{ results['Gamme']}}</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
+
+                {% for Module in results['Module'] %}
                 <tr>
-                  <td>Mur Exterieur</td>
-                  <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                  <td>
-                    <input id="checkbox" type="checkbox">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Mur Interieur</td>
-                  <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                  <td>
-                    <input id="checkbox" type="checkbox">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Toiture</td>
-                  <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                  <td>
-                    <input id="checkbox" type="checkbox">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Sol</td>
-                  <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
-                  <td>
-                    <input id="checkbox" type="checkbox">
-                  </td>
-                </tr>
-                <tr>
-                  <td><input class="btn btn-primary" type="button" value="Module personnalisé"></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                <td> {{ Module.Nom }} </td>
+                <td class="text-center" scope="row"><span class="glyphicon glyphicon-ok"></span></td>
+                <td>
+                  <input id="checkbox" type="checkbox" checked>
+                </td>
+              </tr>
+                {% endfor %}
+
               </tbody>
             </table>
           </div>

@@ -20,10 +20,10 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-         $this->GenerateBDD();
+         //$this->GenerateBDD();
         $arrayModeleGamme = $this->getModeleGamme();
         $result = $this->GetArray();
-          // var_dump($result);
+      //     var_dump($result);
       //   $repository = $this
       //     ->getDoctrine()
       //     ->getManager()
@@ -47,7 +47,7 @@ class DefaultController extends Controller
     public function resultsAction()
     {
          // $this->GenerateBDD();
-        // $arrayModeleGamme = $this->getModeleGamme();
+      // $arrayModeleGamme = $this->getModeleGamme();
         $user = $this->getUtilisateur(1);
         $nom = $user->getNom();
         $data = $this->getEtape2("Maison Ville", "Basique");
@@ -363,25 +363,6 @@ class DefaultController extends Controller
         $em->flush();
     }
 
-    public function SetTeinte($codeTeinte, $description, $fk_composant){
-        $m = new Teinte();
-        $m->setCodeTeinte($codeTeinte);
-        $m->setDescription($description);
-        $m->setFkComposant($fk_composant);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($m);
-        $em->flush();
-    }
-
-    public function SetMatiere($matiere, $fk_composant){
-        $m = new Matiere();
-        $m->setMatiere($matiere);
-        $m->setFkComposant($fk_composant);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($m);
-        $em->flush();
-    }
-
     public function SetUtilisateur($lastname, $name, $mail, $num, $homenum, $login, $mdp, $actif, $usertype){
         $m = new Utilisateur();
         $m->setNom($lastname);
@@ -410,24 +391,6 @@ class DefaultController extends Controller
         $em->flush();
     }
 
-    public function SetComposant($nom, $longueur, $largeur, $taille, $poids, $stock, $prix, $gamme, $fournisseur, $module, $matiere, $teinte){
-        $m = new Composant();
-        $m->setNom($nom);
-        $m->setLongueur($longueur);
-        $m->setLargeur($largeur);
-        $m->setTaille($taille);
-        $m->setPoids($poids);
-        $m->setStock($stock);
-        $m->setPrix($prix);
-        $m->setFkGamme($gamme);
-        $m->setFkFournisseur($fournisseur);
-        $m->setFkModule($module);
-        $m->setFkMatiere($matiere);
-        $m->setFkTeinte($teinte);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($m);
-        $em->flush();
-    }
 
     public function SetTeinte($codeTeinte, $description, $fk_composant){
         $m = new Teinte();
