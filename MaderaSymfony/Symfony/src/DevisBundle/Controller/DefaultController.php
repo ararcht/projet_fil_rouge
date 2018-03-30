@@ -8,6 +8,7 @@ use DevisBundle\Entity\Modele;
 use DevisBundle\Entity\Gamme;
 use DevisBundle\Entity\Utilisateur;
 use DevisBundle\Entity\Image;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -38,8 +39,10 @@ class DefaultController extends Controller
     /**
      * @Route("/results")
      */
-    public function resultsAction()
+    public function resultsAction(Request $request)
     {
+      $test = $request->request->get('name');
+      var_dump($test);
         // $this->GenerateBDD();
         // $arrayModeleGamme = $this->getModeleGamme();
 $user = $this->getUtilisateur(1);
