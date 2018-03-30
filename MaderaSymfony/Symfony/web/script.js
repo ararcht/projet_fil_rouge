@@ -24,6 +24,7 @@ $(".selectUnite").each( function(){
     getSelectedOption();
 });
 
+<<<<<<< HEAD
 
 
 $(".selectUnite").change(function() {
@@ -40,12 +41,21 @@ $(".selectUnite").change(function() {
       $("#prix").text(total);
   });
 });
+=======
+>>>>>>> d1ff687d317fad7be11205e939a3ec7272e4ba95
 function getSelectedOption(){
     var count = 0;
     var listvalue = $(".selectUnite").find(":selected").text();
     for (let index = 0; index < listvalue.length; index++) {
         count = count +parseInt(listvalue[index]);
+<<<<<<< HEAD
 
     }
     $("#nOpt").text(count);
 }
+=======
+        
+    }
+    $("#nOpt").text(count);   
+}
+>>>>>>> d1ff687d317fad7be11205e939a3ec7272e4ba95

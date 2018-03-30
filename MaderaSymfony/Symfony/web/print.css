@@ -1,0 +1,6 @@
+.btn,.home,.elementhide {
+  display:none;
+}
+td,tr,table, div.panelbody{
+  padding: 1px !important;
+}

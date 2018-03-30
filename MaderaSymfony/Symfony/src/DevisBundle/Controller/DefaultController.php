@@ -31,8 +31,7 @@ class DefaultController extends Controller
       $user = $this->getUtilisateur(1);
 
       $nom = $user->getNom();
-// var_dump($nom);
-        //$nom = $user->getNom();
+
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
     }
 
@@ -41,13 +40,12 @@ class DefaultController extends Controller
      */
     public function resultsAction(Request $request)
     {
-      $test = $request->request->get('name');
-      var_dump($test);
+        // var_dump($test);
         // $this->GenerateBDD();
         // $arrayModeleGamme = $this->getModeleGamme();
-$user = $this->getUtilisateur(1);
+        $user = $this->getUtilisateur(1);
         $nom = $user->getNom();
-        $result = $this->getEtape2("Maison Ville", "Basique");
+        $result = $this->getEtape2($_GET["Modele"], $_GET["Gamme"]);
       //  var_dump($result);
         return $this->render('DevisBundle:Default:results.html.twig', array('username' => $nom, 'results' =>$result));
     }
@@ -95,7 +93,7 @@ $user = $this->getUtilisateur(1);
         foreach($modeles as $model){
             $id = $model->getId();
             $arrayTemp[0] = $model->getNom();
-            
+
             $arrayTemp[1] = $url[$j];
             $j++;
             // $url = $model->getFkImage()[0];
