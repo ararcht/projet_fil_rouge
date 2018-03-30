@@ -95,6 +95,7 @@ $user = $this->getUtilisateur(1);
         foreach($modeles as $model){
             $id = $model->getId();
             $arrayTemp[0] = $model->getNom();
+            
             $arrayTemp[1] = $url[$j];
             $j++;
             // $url = $model->getFkImage()[0];
