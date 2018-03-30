@@ -21,7 +21,9 @@ $(".selectUnite").each( function(){
     var p2 = parseInt(total);
     total = p1 + p2;
     $("#prix").text(total);
+    getSelectedOption();
 });
+
 
 
 $(".selectUnite").change(function() {
@@ -38,3 +40,12 @@ $(".selectUnite").change(function() {
       $("#prix").text(total);
   });
 });
+function getSelectedOption(){
+    var count = 0;
+    var listvalue = $(".selectUnite").find(":selected").text();
+    for (let index = 0; index < listvalue.length; index++) {
+        count = count +parseInt(listvalue[index]);
+
+    }
+    $("#nOpt").text(count);
+}
