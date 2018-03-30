@@ -13,6 +13,23 @@ use Doctrine\ORM\Mapping as ORM;
 class Paiement
 {
     /**
+     * @ORM\Column(name="MoyenPaiement",type="integer")
+     * @ORM\ManyToOne(targetEntity="DevisBundle\Entity\MoyenPaiement")
+     */
+     private $fk_moyenPaiement;
+
+     public function setmoyenPaiement(UserType $fk_moyenPaiement)
+     {
+       $this->fk_moyenPaiement = $fk_moyenPaiement;
+       return $this;
+     }
+
+     public function getmoyenPaiement()
+     {
+       return $this->fk_moyenPaiement;
+     }
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

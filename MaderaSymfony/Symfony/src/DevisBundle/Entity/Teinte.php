@@ -19,7 +19,7 @@ class Teinte
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
@@ -33,8 +33,14 @@ class Teinte
      *
      * @ORM\Column(name="Description", type="string", length=255)
      */
-    private $description;
+    public $description;
 
+    /**
+     * @var int
+     * @ORM\Column(name="Composant", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Composant", mappedBy="Teinte")
+     */
+    private $fk_composant;
 
     /**
      * Get id.
@@ -92,5 +98,29 @@ class Teinte
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set fkComposant.
+     *
+     * @param int $fkComposant
+     *
+     * @return Teinte
+     */
+    public function setFkComposant($fkComposant)
+    {
+        $this->fk_composant = $fkComposant;
+
+        return $this;
+    }
+
+    /**
+     * Get fkComposant.
+     *
+     * @return int
+     */
+    public function getFkComposant()
+    {
+        return $this->fk_composant;
     }
 }

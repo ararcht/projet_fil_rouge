@@ -1,0 +1,33 @@
+.blockmodele{
+  background-color: #CCCBCB;
+  height: auto;
+  padding: 20px;
+  box-shadow: 1px 1px 5px #555;
+}
+.flex-parent{
+  display:flex;
+}
+
+.blockmodelegamme{
+  margin-bottom: 40px;
+}
+
+.titlemodele{
+  font-size: 1.5em;
+}
+
+.blockgamme{
+  padding-left: 50px;
+}
+
+@media screen and (max-width: 1000px) {
+  .flex-parent {
+    display:block;
+  }
+}
+
+@media (min-width: 768px){
+.navbar-form .form-group {
+    display:none;
+  }
+}

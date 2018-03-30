@@ -28,6 +28,12 @@ class TypeModule
      */
     private $nom;
 
+    /**
+     * @var int
+     * @ORM\Column(name="Module", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Module", mappedBy="TypeModule")
+     */
+    private $fk_module;
 
     /**
      * Get id.
@@ -61,5 +67,29 @@ class TypeModule
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set fkModule.
+     *
+     * @param int $fkModule
+     *
+     * @return TypeModule
+     */
+    public function setFkModule($fkModule)
+    {
+        $this->fk_module = $fkModule;
+
+        return $this;
+    }
+
+    /**
+     * Get fkModule.
+     *
+     * @return int
+     */
+    public function getFkModule()
+    {
+        return $this->fk_module;
     }
 }

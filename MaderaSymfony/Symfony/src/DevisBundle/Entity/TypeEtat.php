@@ -28,6 +28,13 @@ class TypeEtat
      */
     private $code;
 
+    /**
+     * @var int
+     * @ORM\Column(name="Etat", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Etat", mappedBy="Etat")
+     */
+    private $fk_commande;
+
 
     /**
      * Get id.
@@ -61,5 +68,29 @@ class TypeEtat
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * Set fkCommande.
+     *
+     * @param int $fkCommande
+     *
+     * @return TypeEtat
+     */
+    public function setFkCommande($fkCommande)
+    {
+        $this->fk_commande = $fkCommande;
+
+        return $this;
+    }
+
+    /**
+     * Get fkCommande.
+     *
+     * @return int
+     */
+    public function getFkCommande()
+    {
+        return $this->fk_commande;
     }
 }

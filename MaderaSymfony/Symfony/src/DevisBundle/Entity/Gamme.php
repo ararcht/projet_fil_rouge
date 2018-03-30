@@ -28,6 +28,20 @@ class Gamme
      */
     private $nom;
 
+    /**
+     * @var int
+     * @ORM\Column(name="Modele", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Modele", mappedBy="Modele")
+     */
+    private $fk_modele;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Composant", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Composant", mappedBy="Composant")
+     */
+    private $fk_composant;
+
 
     /**
      * Get id.
@@ -61,5 +75,53 @@ class Gamme
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set fkModele.
+     *
+     * @param int $fkModele
+     *
+     * @return Gamme
+     */
+    public function setFkModele($fkModele)
+    {
+        $this->fk_modele = $fkModele;
+
+        return $this;
+    }
+
+    /**
+     * Get fkModele.
+     *
+     * @return int
+     */
+    public function getFkModele()
+    {
+        return $this->fk_modele;
+    }
+
+    /**
+     * Set fkComposant.
+     *
+     * @param int $fkComposant
+     *
+     * @return Gamme
+     */
+    public function setFkComposant($fkComposant)
+    {
+        $this->fk_composant = $fkComposant;
+
+        return $this;
+    }
+
+    /**
+     * Get fkComposant.
+     *
+     * @return int
+     */
+    public function getFkComposant()
+    {
+        return $this->fk_composant;
     }
 }

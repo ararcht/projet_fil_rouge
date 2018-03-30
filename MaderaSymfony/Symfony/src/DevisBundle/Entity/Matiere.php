@@ -19,14 +19,21 @@ class Matiere
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Matiere", type="string", length=255)
      */
-    private $matiere;
+    public $matiere;
+
+    /**
+     * @var int
+     * @ORM\Column(name="Composant", type="integer")
+     * @ORM\OneToMany(targetEntity="DevisBundle\Entity\Composant", mappedBy="Matiere")
+     */
+    private $fk_composant;
 
 
     /**
@@ -61,5 +68,29 @@ class Matiere
     public function getMatiere()
     {
         return $this->matiere;
+    }
+
+    /**
+     * Set fkComposant.
+     *
+     * @param int $fkComposant
+     *
+     * @return Matiere
+     */
+    public function setFkComposant($fkComposant)
+    {
+        $this->fk_composant = $fkComposant;
+
+        return $this;
+    }
+
+    /**
+     * Get fkComposant.
+     *
+     * @return int
+     */
+    public function getFkComposant()
+    {
+        return $this->fk_composant;
     }
 }
