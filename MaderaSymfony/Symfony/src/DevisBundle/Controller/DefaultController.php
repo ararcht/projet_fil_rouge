@@ -30,7 +30,7 @@ class DefaultController extends Controller
 
       $user = $this->getUtilisateur(1);
 
-      $nom = $user->getNom();
+      $nom = $user->getUsername();
 
         return $this->render('DevisBundle:Default:index.html.twig', array('modeles' => $result, 'username' => $nom));
     }
@@ -65,7 +65,7 @@ class DefaultController extends Controller
      $repository = $this
          ->getDoctrine()
          ->getManager()
-         ->getRepository('DevisBundle:Utilisateur')
+         ->getRepository('DevisBundle:User')
        ;
 
      $user = $repository->find($id);

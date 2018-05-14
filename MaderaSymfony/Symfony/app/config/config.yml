@@ -11,7 +11,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: ~
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -44,9 +44,9 @@ doctrine:
     dbal:
         driver: pdo_mysql
         host: '127.0.0.1'
-        port: '3306'
+        port: '8889'
         dbname: 'madera_devis'
-        user: 'root'
+        user: 'Alison'
         password: ''
         charset: UTF8
         # if using pdo_sqlite as your database driver:
@@ -68,3 +68,11 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: DevisBundle\Entity\User
+    from_email:
+        address: alison@rarchaert.fr
+        sender_name: alison
