@@ -1,4 +1,10 @@
 {% extends "base.html.twig" %}
+    {% block stylesheets %}
+      <link href="{{ asset('3d_house/css/mainStyle.css') }}" rel="stylesheet" />
+    {% endblock %}
+    {% block jsTop %}
+      <script src="{{ asset('3d_house/plugin/babylon.custom.js') }}"></script>
+    {% endblock %}
     {% block body %}
                       {% block topmenu %}
                           <nav class="navbar navbar-default">
@@ -188,9 +194,8 @@
                                 </div>
                               </div>
                               <div class="panel-body">
-                                <a href='http://guilde.heros.free.fr/maison3d/index2.html' target = "_blank">
-                                <img src="img/ext.png" alt="ext" style="max-height:200px;text-align: center;" class="imgpreview"/>
-                                </a>
+                                <canvas id="renderCanvas"></canvas>
+                                <div id="notSupported" class="hidden">ERREUR WebGL non disponible pour votre navigateur</div>
                               </div>
                             </div>
                           </div>
@@ -202,6 +207,16 @@
                           </div>
                         </div>
                         </div>
+                        <script src="{{ asset('3d_house/js/Init.js') }}"></script>
+                        <script src="{{ asset('3d_house/js/Camera.js') }}"></script>
+                        <script src="{{ asset('3d_house/js/House_1.js') }}"></script>
+                        <span id="texture" style="display:none;"
+                        murExt="{{ asset('3d_house/assets/images/wood_texture_1.jpg') }}"
+                        toit="{{ asset('3d_house/assets/images/tile_texture_1.jpg') }}"
+                        solInt="{{ asset('3d_house/assets/images/wood_texture_2.jpg') }}"
+                        solMonde="{{ asset('3d_house/assets/images/grass_texture_1.jpg') }}"
+                        >
+                        </span>
                         <script>
                           $("#goto").on("click", function(){
                             var txt = $(".descriptif")[0].firstChild.data;
@@ -219,4 +234,4 @@
                             }
                           });
                         </script>
-                      {% endblock %}
+{% endblock %}

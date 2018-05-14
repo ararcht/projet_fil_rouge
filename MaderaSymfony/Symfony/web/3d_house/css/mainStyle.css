@@ -1,0 +1,33 @@
+html, body {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#renderCanvas {
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+}
+
+#notSupported{
+	color: red;
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	background-color: #eee;
+	border: 1px solid #888;
+	text-align: center;
+	padding-top: 10px;
+	font-size: 30px;
+	z-index: 3;
+	cursor: default;
+}
+
+.hidden{
+	display: none;
+}
