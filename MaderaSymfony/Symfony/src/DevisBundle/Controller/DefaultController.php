@@ -44,7 +44,7 @@ class DefaultController extends Controller
         // $this->GenerateBDD();
         // $arrayModeleGamme = $this->getModeleGamme();
         $user = $this->getUtilisateur(1);
-        $nom = $user->getNom();
+        $nom = $user->getUsername();
         $result = $this->getEtape2($_GET["Modele"], $_GET["Gamme"]);
       //  var_dump($result);
         return $this->render('DevisBundle:Default:results.html.twig', array('username' => $nom, 'results' =>$result));
