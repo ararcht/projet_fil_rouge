@@ -154,7 +154,7 @@ House_1 = function(init) {
 
   //Charge arbre
   var assetsManager = new BABYLON.AssetsManager(scene);
-  var meshTask = assetsManager.addMeshTask("skull task", "", "assets/tree/", "Tree.obj");
+  var meshTask = assetsManager.addMeshTask("skull task", "", "3d_house/assets/tree/", "Tree.obj");
   meshTask.onSuccess = function (task) {
     task.loadedMeshes[0].position = new BABYLON.Vector3(10,-3.01,0);
     shadowGenerator.getShadowMap().renderList.push(task.loadedMeshes[0]);
@@ -524,7 +524,7 @@ House_1 = function(init) {
   ////////////
     Option d'afficher/Cacher GUI
   ///////////
-  *//*
+  */
   var option = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
   var panel = new BABYLON.GUI.StackPanel();
@@ -772,7 +772,14 @@ House_1 = function(init) {
   textOmbre.color = "white";
   panelOmbre.addControl(textOmbre);
 
-*/
+  document.getElementById("canvasUp").addEventListener("click",function () {
+    panel.isVisible = true;
+  })
+  document.getElementById("canvasDown").addEventListener("click",function () {
+    panel.isVisible = false;
+  })
+  panel.isVisible = false;
+
   //Fin return graphic
   return scene;
 }

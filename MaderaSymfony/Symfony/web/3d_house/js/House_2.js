@@ -20,7 +20,7 @@ House_1 = function(init) {
 */
   //Materiel et texture mur ext
   var murExt = new BABYLON.StandardMaterial("murExt", scene);
-    murExt.diffuseTexture = new BABYLON.Texture("assets/images/wood_texture_1.jpg", scene);
+    murExt.diffuseTexture = new BABYLON.Texture($('#texture').attr('murExt'), scene);
 
   //Materiel et texture mur int
   var murInt = new BABYLON.StandardMaterial("murInt", scene);
@@ -28,15 +28,15 @@ House_1 = function(init) {
 
   //Materiel et texture toit
   var toit = new BABYLON.StandardMaterial("toit", scene);
-  toit.diffuseTexture = new BABYLON.Texture("assets/images/tile_texture_1.jpg", scene);
+  toit.diffuseTexture = new BABYLON.Texture($('#texture').attr('toit'), scene);
 
   //Materiel et texture sol
   var sol = new BABYLON.StandardMaterial("sol", scene);
-    sol.diffuseTexture = new BABYLON.Texture("assets/images/wood_texture_2.jpg", scene);
+    sol.diffuseTexture = new BABYLON.Texture($('#texture').attr('solInt'), scene);
 
   //Materiel et texture solMonde
   var solMonde = new BABYLON.StandardMaterial('solMonde', scene);
-    solMonde.diffuseTexture = new BABYLON.Texture("assets/images/grass_texture_1.jpg", scene);
+    solMonde.diffuseTexture = new BABYLON.Texture($('#texture').attr('solMonde'), scene);
     solMonde.diffuseTexture.uScale = 500.0;
     solMonde.diffuseTexture.vScale = 500.0;
 
@@ -177,7 +177,7 @@ House_1 = function(init) {
 
   //Charge arbre
   var assetsManager = new BABYLON.AssetsManager(scene);
-  var meshTask = assetsManager.addMeshTask("skull task", "", "assets/tree/", "Tree.obj");
+  var meshTask = assetsManager.addMeshTask("skull task", "", "3d_house/assets/tree/", "Tree.obj");
   meshTask.onSuccess = function (task) {
     task.loadedMeshes[0].position = new BABYLON.Vector3(10,-3.01,0);
     shadowGenerator.getShadowMap().renderList.push(task.loadedMeshes[0]);
@@ -888,6 +888,14 @@ House_1 = function(init) {
   textOmbre.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
   textOmbre.color = "white";
   panelOmbre.addControl(textOmbre);
+
+  document.getElementById("canvasUp").addEventListener("click",function () {
+    panel.isVisible = true;
+  })
+  document.getElementById("canvasDown").addEventListener("click",function () {
+    panel.isVisible = false;
+  })
+  panel.isVisible = false;
 
   //Fin return graphic
   return scene;

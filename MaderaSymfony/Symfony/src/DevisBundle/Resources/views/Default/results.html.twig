@@ -185,7 +185,7 @@
                                 </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default home">
+                            <div id="3dview" class="panel panel-default home">
                               <div class="panel-heading">
                                 <div class="row">
                                   <div class="col-md-12">
@@ -196,6 +196,8 @@
                               <div class="panel-body">
                                 <canvas id="renderCanvas"></canvas>
                                 <div id="notSupported" class="hidden">ERREUR WebGL non disponible pour votre navigateur</div>
+                                <button id="canvasUp" class="btn btn-info">Agrandir</button>
+                                <button id="canvasDown" class="btn btn-danger hidden">Réduire</button>
                               </div>
                             </div>
                           </div>
@@ -209,7 +211,7 @@
                         </div>
                         <script src="{{ asset('3d_house/js/Init.js') }}"></script>
                         <script src="{{ asset('3d_house/js/Camera.js') }}"></script>
-                        <script src="{{ asset('3d_house/js/House_1.js') }}"></script>
+                        <script src="{{ asset('3d_house/js/House_3.js') }}"></script>
                         <span id="texture" style="display:none;"
                         murExt="{{ asset('3d_house/assets/images/wood_texture_1.jpg') }}"
                         toit="{{ asset('3d_house/assets/images/tile_texture_1.jpg') }}"
@@ -232,6 +234,16 @@
                               $(".descriptif").html("Exterieur");
                               $("#goto")[0].value = "Interieur";
                             }
+                          });
+                          $("#canvasUp").on("click", function() {
+                            $("#3dview").addClass("upSize");
+                            $("#canvasUp").addClass("hidden");
+                            $("#canvasDown").removeClass("hidden");
+                          });
+                          $("#canvasDown").on("click", function() {
+                            $("#3dview").removeClass("upSize");
+                            $("#canvasUp").removeClass("hidden");
+                            $("#canvasDown").addClass("hidden");
                           });
                         </script>
 {% endblock %}

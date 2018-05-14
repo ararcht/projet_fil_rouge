@@ -34,7 +34,12 @@ Init = function(canvasId) {
             engine.resize();
         }
     },false);
-
+    document.getElementById("canvasUp").addEventListener("click",function () {
+      engine.resize();
+    })
+    document.getElementById("canvasDown").addEventListener("click",function () {
+      engine.resize();
+    })
 };
 
 Init.prototype = {
