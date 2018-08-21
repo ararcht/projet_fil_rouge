@@ -12,13 +12,23 @@
                             <div class="navbar-header">
                             <a href='/'>
                               <img src="img/logo.png" alt="logo" style="max-height:50px;" />
+
                             </a>
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
                               <ul class="nav navbar-nav">
                               <form class="navbar-form navbar-right">
+                              {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                  Connecté en tant que {{ app.user.username }}
+                                  -
+                                  <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                                  {% else %}
+                                      <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                                  {% endif %}
                               <div class="form-group">
-                                <div>Client : {{ username }}</div>
+                                <div>
+                                </div>
                               </form>
                             </div>
                             </div>
