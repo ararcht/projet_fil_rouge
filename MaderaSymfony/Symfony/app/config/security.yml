@@ -14,13 +14,13 @@ security:
         main:
             pattern:        ^/
             anonymous:      true
-            
+
             form_login:
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
             logout:
                 path:       fos_user_security_logout
-                target:     /platform
+                target:     /login
             remember_me:
                 secret:        %secret%
 
@@ -29,3 +29,4 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/, role: ROLE_USER }
